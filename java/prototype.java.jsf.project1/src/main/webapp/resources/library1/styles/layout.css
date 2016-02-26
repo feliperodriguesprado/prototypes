@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+}
+
+header {
+    border: 1px solid black;
+}
+
+.content {
+    height: 1000px;
+}
+
+footer {
+    border: 1px solid black;
+    bottom: 0px;
+    position: fixed; width: 100%;
+}
