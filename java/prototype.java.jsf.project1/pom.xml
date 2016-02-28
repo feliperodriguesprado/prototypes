@@ -20,6 +20,14 @@
             <artifactId>primefaces</artifactId>
             <version>5.3</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>1.0.10</version>
+            <scope>compile</scope>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -29,6 +37,9 @@
     </dependencies>
 
     <build>
+        
+        <finalName>${project.artifactId}</finalName>
+        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
