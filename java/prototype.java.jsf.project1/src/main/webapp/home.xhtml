@@ -14,9 +14,10 @@
         <h:form>
 
             <div class="ui-fluid">
-                <p:panelGrid columns="3" 
+
+                <p:panelGrid columns="2" 
                              layout="grid" 
-                             columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" >
+                             columnClasses="ui-grid-col-4, ui-grid-col-2" >
 
                     <p:column>
                         <p:outputLabel value="Name" />
@@ -28,10 +29,27 @@
                         <p:inputMask mask="999.999.999-99" />
                     </p:column>
 
+                </p:panelGrid>
+
+                <p:panelGrid columns="2" 
+                             layout="grid" 
+                             columnClasses="ui-grid-col-3, ui-grid-col-3">
+
+                    <p:column>
+                        <p:outputLabel value="Birthday" />
+                        <p:calendar pattern="dd/MM/yyyy" />
+                    </p:column>
+
                     <p:column>
                         <p:outputLabel value="Phone" />
                         <p:inputText />
                     </p:column>
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="1" 
+                             layout="grid" 
+                             columnClasses="ui-grid-col-2">
 
                     <p:column>
                         <p:outputLabel value="Relationship" />
@@ -42,24 +60,19 @@
                         </p:selectOneMenu>
                     </p:column>
 
+                </p:panelGrid>
+
+                <p:panelGrid styleClass="button-panel">
                     <p:column>
-                        <p:outputLabel value="Birthday" />
-                        <p:calendar pattern="dd/MM/yyyy" />
+                        <p:commandButton value="Cancel"></p:commandButton>
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton value="Save"></p:commandButton>
                     </p:column>
                 </p:panelGrid>
 
-                <p:panelGrid columns="2" 
-                             layout="grid" 
-                             columnClasses="ui-grid-col-6, ui-grid-col-6" 
-                             class="button-panel">
-
-                    <p:commandButton value="Cancel"></p:commandButton>
-                    <p:commandButton value="Save"></p:commandButton>
-                </p:panelGrid>
             </div>
-
-
-
         </h:form>
 
     </ui:define>

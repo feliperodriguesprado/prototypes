@@ -8,15 +8,6 @@
     }
 }
 
-.button-panel {
-    margin-top: 30px;
-    width: 30%;
-    float: right;
-}
-
-@media (max-width: 640px) {
-    .button-panel {
-        width: auto; 
-        float: none;
-    }
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none !important;
 }
