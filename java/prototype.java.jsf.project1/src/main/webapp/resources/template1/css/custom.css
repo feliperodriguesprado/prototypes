@@ -1,3 +1,22 @@
 .ui-widget-content {
     border: none;
 }
+
+@media (max-width: 640px) {
+    .ui-panelgrid .ui-grid-responsive .ui-grid-row {
+        border-top: none !important;
+    }
+}
+
+.button-panel {
+    margin-top: 30px;
+    width: 30%;
+    float: right;
+}
+
+@media (max-width: 640px) {
+    .button-panel {
+        width: auto; 
+        float: none;
+    }
+}

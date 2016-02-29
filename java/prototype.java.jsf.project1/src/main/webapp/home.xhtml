@@ -8,49 +8,57 @@
     <ui:define name="content">
 
         <div class="title-content">
-            <h2>Orçamento</h2>
+            <h2>Customer</h2>
         </div>
 
         <h:form>
 
-            <p:toolbar>
-                <p:toolbarGroup>
-                    <p:commandButton value="Salvar" />
-                </p:toolbarGroup>
-            </p:toolbar>
-
             <div class="ui-fluid">
+                <p:panelGrid columns="3" 
+                             layout="grid" 
+                             columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4" >
 
-                <p:panelGrid columns="4" layout="grid" 
-                             style="margin-top: 20px; margin-bottom: 40px;"
-                             styleClass="panelgrid-noborder"
-                             columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+                    <p:column>
+                        <p:outputLabel value="Name" />
+                        <p:inputText />
+                    </p:column>
 
-                    <p:outputLabel value="Cliente" />
-                    <p:inputText />
+                    <p:column>
+                        <p:outputLabel value="CPF" />
+                        <p:inputMask mask="999.999.999-99" />
+                    </p:column>
 
-                    <p:outputLabel value="CPF" />
-                    <p:inputMask mask="999.999.999-99" />
+                    <p:column>
+                        <p:outputLabel value="Phone" />
+                        <p:inputText />
+                    </p:column>
 
-                    <p:outputLabel value="Telefone" />
-                    <p:inputText />
+                    <p:column>
+                        <p:outputLabel value="Relationship" />
+                        <p:selectOneMenu >
+                            <f:selectItem itemLabel="Select" />
+                            <f:selectItem itemLabel="Married" itemValue="married" />
+                            <f:selectItem itemLabel="Not married" itemValue="not_married" />
+                        </p:selectOneMenu>
+                    </p:column>
 
-                    <p:outputLabel value="Condição de pagto" />
-                    <p:selectOneMenu >
-                        <f:selectItem itemLabel="Selecione" />
-                        <f:selectItem itemLabel="A vista" itemValue="A vista" />
-                        <f:selectItem itemLabel="30 dias" itemValue="30 dias" />
-                        <f:selectItem itemLabel ="30 + 60 dias" itemValue="30 + 60 dias" />
-                    </p:selectOneMenu>
+                    <p:column>
+                        <p:outputLabel value="Birthday" />
+                        <p:calendar pattern="dd/MM/yyyy" />
+                    </p:column>
+                </p:panelGrid>
 
-                    <p:outputLabel value="Dias entrega" />
-                    <p:inputText />
+                <p:panelGrid columns="2" 
+                             layout="grid" 
+                             columnClasses="ui-grid-col-6, ui-grid-col-6" 
+                             class="button-panel">
 
-                    <p:outputLabel value="Validade" />
-                    <p:calendar pattern="dd/MM/yyyy" />
-
+                    <p:commandButton value="Cancel"></p:commandButton>
+                    <p:commandButton value="Save"></p:commandButton>
                 </p:panelGrid>
             </div>
+
+
 
         </h:form>
 
