@@ -8,6 +8,7 @@ import javax.inject.Named;
 @Named
 public class CustomerController implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String name;
 
     public void save() {
