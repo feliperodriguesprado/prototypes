@@ -20,8 +20,8 @@
                              columnClasses="ui-grid-col-4, ui-grid-col-2" >
 
                     <p:column>
-                        <p:outputLabel value="Name" />
-                        <p:inputText />
+                        <p:outputLabel for="name" value="Name" />
+                        <p:inputText id="name" value="#{customerController.name}"/>
                     </p:column>
 
                     <p:column>
@@ -68,7 +68,7 @@
                     </p:column>
 
                     <p:column>
-                        <p:commandButton value="Save"></p:commandButton>
+                        <p:commandButton value="Save" action="#{customerController.save()}"></p:commandButton>
                     </p:column>
                 </p:panelGrid>
 
