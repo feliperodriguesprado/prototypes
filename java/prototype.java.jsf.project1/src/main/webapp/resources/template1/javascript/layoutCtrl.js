@@ -1,11 +1,25 @@
 var LayoutCtrl = (function () {
 
-    function LayoutCtrl() { }
+    function LayoutCtrl() {
+
+        this.isSidebarShow = false;
+
+    }
 
     LayoutCtrl.prototype.setEvents = function () {
         setEventsBtnToggle();
         setEventsOverlayBlack();
+        setEventMouseOver();
     };
+
+    function setEventMouseOver() {
+        window.addEventListener('mousemove', function (event) {
+            if (event.pageX < 10 && !LayoutCtrl.isSidebarShow) {
+                toggleMenu();
+                event.preventDefault();
+            }
+        });
+    }
 
     function setEventsBtnToggle() {
 
@@ -26,6 +40,12 @@ var LayoutCtrl = (function () {
         $('#sidebar').toggleClass('sidebar-toggled');
         $('#section').toggleClass('section-toggled');
         $('#overlay').toggleClass('overlay-toggle');
+
+        LayoutCtrl.isSidebarShow = true;
+
+        setTimeout(function () {
+            LayoutCtrl.isSidebarShow = false;
+        }, 2000);
     }
 
     return LayoutCtrl;
