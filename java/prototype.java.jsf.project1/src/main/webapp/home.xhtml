@@ -13,66 +13,48 @@
 
         <div class="content">
             <h:form>
-
                 <div class="ui-fluid">
-
-                    <p:panelGrid columns="3" 
-                                 layout="grid" 
-                                 columnClasses="ui-grid-col-6, ui-grid-col-3, ui-grid-col-3"
-                                 styleClass="ui-panelgrid-blank" >
-
+                    <p:panelGrid columns="3" columnClasses="ui-grid-col-6, ui-grid-col-3, ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank" >
                         <p:column>
                             <p:outputLabel for="name" value="Name" />
-                            <p:inputText id="name" value="#{customerController.customer.name}"/>
+                            <p:inputText id="name" value="#{customerController.customer.name}" />
                         </p:column>
-
                         <p:column>
-                            <p:outputLabel value="CPF" />
-                            <p:inputMask mask="999.999.999-99" value="#{customerController.customer.cpf}" />
+                            <p:outputLabel for="cpf" value="CPF" />
+                            <p:inputMask id="cpf" mask="999.999.999-99" value="#{customerController.customer.cpf}" />
                         </p:column>
-
                         <p:column>
-                            <p:outputLabel value="Birthday" />
-                            <p:calendar pattern="dd/MM/yyyy" value="#{customerController.customer.birthday}" />
+                            <p:outputLabel for="birthday" value="Birthday" />
+                            <p:calendar id="birthday" pattern="dd/MM/yyyy" value="#{customerController.customer.birthday}" />
                         </p:column>
-
                     </p:panelGrid>
 
-                    <p:panelGrid columns="2" 
-                                 layout="grid" 
-                                 columnClasses="ui-grid-col-3, ui-grid-col-3"
-                                 styleClass="ui-panelgrid-blank" >
-
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-3, ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank" >
                         <p:column>
-                            <p:outputLabel value="Phone" />
-                            <p:inputText value="#{customerController.customer.phone}" />
+                            <p:outputLabel for="phone" value="Phone" />
+                            <p:inputText id="phone" value="#{customerController.customer.phone}" />
                         </p:column>
-
                         <p:column>
-                            <p:outputLabel value="Relationship" />
-                            <p:selectOneMenu value="#{customerController.customer.relationship}" >
+                            <p:outputLabel for="relationship" value="Relationship" />
+                            <p:selectOneMenu id="relationship" value="#{customerController.customer.relationship}" >
                                 <f:selectItem itemLabel="Select" />
                                 <f:selectItem itemLabel="Married" itemValue="married" />
                                 <f:selectItem itemLabel="Not married" itemValue="not_married" />
                             </p:selectOneMenu>
                         </p:column>
-
                     </p:panelGrid>
 
                     <p:panelGrid styleClass="button-panel">
                         <p:column>
                             <p:commandButton value="Cancel"></p:commandButton>
                         </p:column>
-
                         <p:column>
                             <p:commandButton value="Save" action="#{customerController.save()}"></p:commandButton>
                         </p:column>
                     </p:panelGrid>
-
                 </div>
             </h:form>
         </div>
-
     </ui:define>
 
 </ui:composition>
