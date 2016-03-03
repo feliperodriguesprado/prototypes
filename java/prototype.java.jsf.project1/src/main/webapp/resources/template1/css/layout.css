@@ -104,21 +104,6 @@ header {
     background-color: #e0e0e0;
 }
 
-@media (max-width: 960px) {
-
-    /*    #sidebar {
-            margin-left: -250px;
-            top: 0px;
-            z-index: 10;
-        }
-    
-        #sidebar.sidebar-toggled {
-            margin-left: 0px;
-            z-index: 10;
-            top: 0px;
-        }*/
-}
-
 /*content*/
 
 #section {
@@ -163,15 +148,6 @@ header {
         width: auto;
         margin: 0 auto;
     }
-
-    /*    #section {
-            margin-left: 0px;
-        }
-    
-        #overlay.overlay-toggle {
-            display: block;
-        }*/
-
 }
 
 /*footer*/
