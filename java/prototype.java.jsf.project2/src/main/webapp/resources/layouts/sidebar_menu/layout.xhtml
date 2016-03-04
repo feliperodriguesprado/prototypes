@@ -7,14 +7,14 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         <title>Prototype 2</title>
 
+        <!-- styles -->
         <h:outputStylesheet library="layouts" name="sidebar_menu/css/layout.css" />
-        
+
+        <!-- scripts -->
         <h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
     </h:head>  
 
@@ -22,21 +22,18 @@
 
         <header>
             <div class="title-header">
-                <h1>Title</h1>
+                <a href="/">Title</a>
             </div>
-<!--            <div id="btn-toggle">
-                <i class="fa fa-bars fa-lg"></i>
-            </div>-->
         </header>
 
-        <nav id="sidebar">
+        <nav>
             <h:form>
-                <p:growl id="messages" showDetail="false"/>
-                <p:menu model="#{menuController.model}" />
+                <p:growl id="messages" showDetail="false" />
+                <p:panelMenu model="#{menuController.model}" />
             </h:form>
         </nav>
 
-        <section id="section">
+        <section>
             <ui:insert name="content" />
         </section>
 

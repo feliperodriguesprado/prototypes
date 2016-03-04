@@ -20,26 +20,27 @@ public class MenuController implements Serializable {
         model = new DefaultMenuModel();
 
         //First submenu
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Dynamic Submenu");
-        DefaultMenuItem item = new DefaultMenuItem("External");
-        item.setUrl("http://www.primefaces.org");
+        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Customer");
+        DefaultMenuItem item = new DefaultMenuItem("Cadastre");
+        item.setUrl("#");
         item.setIcon("ui-icon-home");
         firstSubmenu.addElement(item);
+        firstSubmenu.isExpanded();
         model.addElement(firstSubmenu);
 
         //Second submenu
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Dynamic Actions");
-        item = new DefaultMenuItem("Save");
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Reports");
+        item = new DefaultMenuItem("Item 1");
         item.setIcon("ui-icon-disk");
         item.setCommand("#{menuBean.save}");
         item.setUpdate("messages");
         secondSubmenu.addElement(item);
-        item = new DefaultMenuItem("Delete");
+        item = new DefaultMenuItem("Item 1");
         item.setIcon("ui-icon-close");
         item.setCommand("#{menuBean.delete}");
         item.setAjax(false);
         secondSubmenu.addElement(item);
-        item = new DefaultMenuItem("Redirect");
+        item = new DefaultMenuItem("Item 1");
         item.setIcon("ui-icon-search");
         item.setCommand("#{menuBean.redirect}");
         secondSubmenu.addElement(item);
