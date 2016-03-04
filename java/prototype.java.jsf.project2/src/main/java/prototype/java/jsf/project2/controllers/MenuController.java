@@ -25,7 +25,7 @@ public class MenuController implements Serializable {
         item.setUrl("#");
         item.setIcon("ui-icon-home");
         firstSubmenu.addElement(item);
-        firstSubmenu.isExpanded();
+        firstSubmenu.setExpanded(true);
         model.addElement(firstSubmenu);
 
         //Second submenu
