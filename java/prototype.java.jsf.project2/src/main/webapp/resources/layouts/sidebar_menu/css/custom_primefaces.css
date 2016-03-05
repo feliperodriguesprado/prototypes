@@ -1,0 +1,18 @@
+/*menu*/
+
+.ui-menu {
+    width: auto !important;
+}
+
+.ui-widget-content {
+    background: #f5f5f5;
+    border: none;
+}
+
+.ui-menu .ui-menuitem-link {
+    width: 94.2% !important;
+}
+
+.ui-panelgrid-cell {
+    border: none !important;
+}

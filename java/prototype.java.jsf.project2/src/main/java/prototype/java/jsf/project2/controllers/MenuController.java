@@ -1,6 +1,7 @@
 package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.model.menu.DefaultMenuItem;
@@ -16,34 +17,44 @@ public class MenuController implements Serializable {
 
     private MenuModel model;
 
-    public MenuController() {
+    @PostConstruct
+    public void init() {
+
         model = new DefaultMenuModel();
 
-        //First submenu
+        DefaultMenuItem item = new DefaultMenuItem(" Dashboard");
+        item.setIcon("fa fa-dashboard");
+        item.setOutcome("dashboard");
+        model.addElement(item);
+
         DefaultSubMenu firstSubmenu = new DefaultSubMenu("Customer");
-        DefaultMenuItem item = new DefaultMenuItem("Cadastre");
-        item.setUrl("#");
-        item.setIcon("ui-icon-home");
+        firstSubmenu.setExpanded(false);
+
+        item = new DefaultMenuItem("Cadastre");
+        item.setOutcome("customerCadastre");
+        item.setIcon("fa fa-pencil-square-o");
         firstSubmenu.addElement(item);
-        firstSubmenu.setExpanded(true);
+
+        item = new DefaultMenuItem("Reports");
+        item.setUrl("#");
+        item.setIcon("fa fa-file-text-o");
+        firstSubmenu.addElement(item);
+
         model.addElement(firstSubmenu);
 
-        //Second submenu
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Reports");
-        item = new DefaultMenuItem("Item 1");
-        item.setIcon("ui-icon-disk");
-        item.setCommand("#{menuBean.save}");
-        item.setUpdate("messages");
+        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Products");
+        firstSubmenu.setExpanded(false);
+        
+        item = new DefaultMenuItem("Cadastre");
+        item.setUrl("#");
+        item.setIcon("fa fa-shopping-cart");
         secondSubmenu.addElement(item);
-        item = new DefaultMenuItem("Item 1");
-        item.setIcon("ui-icon-close");
-        item.setCommand("#{menuBean.delete}");
-        item.setAjax(false);
+
+        item = new DefaultMenuItem("Reports");
+        item.setUrl("#");
+        item.setIcon("fa fa-file-text-o");
         secondSubmenu.addElement(item);
-        item = new DefaultMenuItem("Item 1");
-        item.setIcon("ui-icon-search");
-        item.setCommand("#{menuBean.redirect}");
-        secondSubmenu.addElement(item);
+
         model.addElement(secondSubmenu);
     }
 

@@ -13,24 +13,37 @@
 
         <!-- styles -->
         <h:outputStylesheet library="layouts" name="sidebar_menu/css/layout.css" />
+        <h:outputStylesheet library="layouts" name="sidebar_menu/css/custom_primefaces.css" />
 
         <!-- scripts -->
         <h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
+        <h:outputScript target="body" library="layouts" name="sidebar_menu/js/layoutCtrl.js" />
     </h:head>  
 
     <h:body>
 
+        <div class="overlay"></div>
+        
         <header>
+            <div class="btn-toggle">
+                <i class="fa fa-bars fa-lg"></i>
+            </div>
             <div class="title-header">
                 <a href="/">Title</a>
             </div>
         </header>
 
-        <nav>
-            <h:form>
-                <p:growl id="messages" showDetail="false" />
-                <p:panelMenu model="#{menuController.model}" />
-            </h:form>
+        <nav class="sidebar">
+            <div class="title-menu">
+                <a href="/">Title</a>
+            </div>
+
+            <div class="menu">
+                <h:form>
+                    <p:growl id="messages" showDetail="false" />
+                    <p:menu model="#{menuController.model}" toggleable="true" />
+                </h:form>
+            </div>
         </nav>
 
         <section>

@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
-            <artifactId>aristo</artifactId>
+            <artifactId>smoothness</artifactId>
             <version>1.0.1</version>
             <scope>compile</scope>
         </dependency>
