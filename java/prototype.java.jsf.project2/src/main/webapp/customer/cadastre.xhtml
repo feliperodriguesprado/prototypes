@@ -10,38 +10,45 @@
         <div class="title-content">
             <h2>Customer</h2>
         </div>
-        
+
         <div class="content">
-            
-            <h:form>                
+
+            <h:form id="formCustomer">
+
                 <div class="ui-fluid">
-                    <p:panelGrid columns="3" columnClasses="ui-grid-col-4, ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank" >
+
+                    <p:panelGrid columns="3" columnClasses="ui-grid-col-4, ui-grid-col-3, ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank" >
                         <p:column>
                             <p:outputLabel for="name" value="Name" />
-                            <p:inputText id="name" />
+                            <p:inputText id="name" value="#{customerController.customerModel.name}" />
+                            <p:message for="name" ></p:message>
                         </p:column>
                         <p:column>
                             <p:outputLabel for="cpf" value="CPF" />
-                            <p:inputMask id="cpf" mask="999.999.999-99" />
+                            <p:inputMask id="cpf" mask="999.999.999-99" value="#{customerController.customerModel.cpf}" />
+                            <p:message for="cpf" ></p:message>
                         </p:column>
                         <p:column>
                             <p:outputLabel for="birthday" value="Birthday" />
-                            <p:calendar id="birthday" pattern="dd/MM/yyyy" />
+                            <p:calendar id="birthday" pattern="dd/MM/yyyy" mask="99/99/9999" locale="pt" value="#{customerController.customerModel.birthday}" />
+                            <p:message for="birthday" ></p:message>
                         </p:column>
                     </p:panelGrid>
 
                     <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank" >
                         <p:column>
                             <p:outputLabel for="phone" value="Phone" />
-                            <p:inputText id="phone" />
+                            <p:inputText id="phone" value="#{customerController.customerModel.phone}" />
+                            <p:message for="phone" ></p:message>
                         </p:column>
                         <p:column>
                             <p:outputLabel for="relationship" value="Relationship" />
-                            <p:selectOneMenu id="relationship" >
+                            <p:selectOneMenu id="relationship" value="#{customerController.customerModel.relationship}"  >
                                 <f:selectItem itemLabel="Select" />
                                 <f:selectItem itemLabel="Married" itemValue="married" />
                                 <f:selectItem itemLabel="Not married" itemValue="not_married" />
                             </p:selectOneMenu>
+                            <p:message for="relationship" ></p:message>
                         </p:column>
                     </p:panelGrid>
 
@@ -50,7 +57,7 @@
                             <p:commandButton value="Cancel" />
                         </p:column>
                         <p:column>
-                            <p:commandButton value="Save" />
+                            <p:commandButton value="Save" action="#{customerController.save}" update="formCustomer" />
                         </p:column>
                     </p:panelGrid>
                 </div>

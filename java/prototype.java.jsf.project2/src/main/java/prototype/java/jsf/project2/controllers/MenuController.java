@@ -44,7 +44,7 @@ public class MenuController implements Serializable {
 
         DefaultSubMenu secondSubmenu = new DefaultSubMenu("Products");
         firstSubmenu.setExpanded(false);
-        
+
         item = new DefaultMenuItem("Cadastre");
         item.setUrl("#");
         item.setIcon("fa fa-shopping-cart");

@@ -9,6 +9,10 @@ html, body {
     min-height: 100%;
 }
 
+.body-toggled {
+    overflow: hidden;
+}
+
 /*header*/
 
 header {
@@ -52,10 +56,14 @@ header {
 
 /*menu*/
 
+nav {
+    overflow: auto;
+}
+
 .sidebar {
     float: left;
     position: fixed;
-    width: 18em;
+    width: 20em;
     height: 100%;
     transition: margin-left 0.8s;
     z-index: 10;

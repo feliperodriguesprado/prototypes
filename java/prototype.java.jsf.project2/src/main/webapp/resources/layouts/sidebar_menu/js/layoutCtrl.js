@@ -1,9 +1,8 @@
 var LayoutCtrl = (function () {
 
+    var isSidebarShow = false;
+
     function LayoutCtrl() {
-
-        this.isSidebarShow = false;
-
     }
 
     LayoutCtrl.prototype.setEvents = function () {
@@ -13,8 +12,8 @@ var LayoutCtrl = (function () {
     };
 
     function setEventMouseOver() {
-        window.addEventListener('mousemove', function (event) {
-            if (event.pageX < 10 && !LayoutCtrl.isSidebarShow) {
+        $(window).on('mousemove', function (event) {
+            if (event.pageX < 10 && !isSidebarShow) {
                 toggleMenu();
                 event.preventDefault();
             }
@@ -22,15 +21,14 @@ var LayoutCtrl = (function () {
     }
 
     function setEventsBtnToggle() {
-
-        document.getElementsByClassName('btn-toggle')[0].addEventListener('click', function (event) {
+        $('.btn-toggle').on('click', function (event) {
             toggleMenu();
             event.preventDefault();
         });
     }
 
     function setEventsOverlayBlack() {
-        document.getElementsByClassName('overlay')[0].addEventListener('click', function (event) {
+        $('.overlay').on('click', function (event) {
             toggleMenu();
             event.preventDefault();
         });
@@ -38,14 +36,9 @@ var LayoutCtrl = (function () {
 
     function toggleMenu() {
         $('.sidebar').toggleClass('sidebar-toggled');
-        $('.section').toggleClass('section-toggled');
         $('.overlay').toggleClass('overlay-toggled');
-
-        LayoutCtrl.isSidebarShow = true;
-
-        setTimeout(function () {
-            LayoutCtrl.isSidebarShow = false;
-        }, 2000);
+        $('body').toggleClass('body-toggled');
+        isSidebarShow = !isSidebarShow;
     }
 
     return LayoutCtrl;
