@@ -38,9 +38,8 @@ function LayoutCtrl() {
         isSidebarShow = !isSidebarShow;
     }
 
-    return {
-        setEvents: setEvents
-    };
+    // public attributes and methods:
+    this.setEvents = setEvents;
 }
 
 var layoutCtrl = new LayoutCtrl();
