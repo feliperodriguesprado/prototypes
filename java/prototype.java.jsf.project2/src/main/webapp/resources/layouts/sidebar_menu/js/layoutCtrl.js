@@ -1,15 +1,12 @@
-var LayoutCtrl = (function () {
+function LayoutCtrl() {
 
     var isSidebarShow = false;
 
-    function LayoutCtrl() {
-    }
-
-    LayoutCtrl.prototype.setEvents = function () {
+    function setEvents() {
         setEventsBtnToggle();
         setEventsOverlayBlack();
         setEventMouseOver();
-    };
+    }
 
     function setEventMouseOver() {
         $(window).on('mousemove', function (event) {
@@ -41,9 +38,10 @@ var LayoutCtrl = (function () {
         isSidebarShow = !isSidebarShow;
     }
 
-    return LayoutCtrl;
-
-}());
+    return {
+        setEvents: setEvents
+    };
+}
 
 var layoutCtrl = new LayoutCtrl();
 layoutCtrl.setEvents();
