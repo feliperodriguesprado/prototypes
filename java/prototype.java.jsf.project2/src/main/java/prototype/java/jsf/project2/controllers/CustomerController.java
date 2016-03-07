@@ -2,6 +2,8 @@ package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import prototype.java.jsf.project2.models.CustomerModel;
@@ -25,6 +27,7 @@ public class CustomerController implements Serializable {
 
     public void save() {
         System.out.println(customerModel);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Customer OK", customerModel.toString()));
     }
 
 }
