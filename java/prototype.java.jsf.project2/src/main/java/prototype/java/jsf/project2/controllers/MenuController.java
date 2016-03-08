@@ -26,36 +26,44 @@ public class MenuController implements Serializable {
         item.setIcon("fa fa-dashboard");
         item.setOutcome("dashboard");
         model.addElement(item);
-
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu("Customer");
-        firstSubmenu.setExpanded(false);
+        
+        DefaultSubMenu customer = new DefaultSubMenu("Customer");
 
         item = new DefaultMenuItem("Cadastre");
         item.setOutcome("customerCadastre");
         item.setIcon("fa fa-pencil-square-o");
-        firstSubmenu.addElement(item);
+        customer.addElement(item);
 
         item = new DefaultMenuItem("Reports");
         item.setUrl("#");
         item.setIcon("fa fa-file-text-o");
-        firstSubmenu.addElement(item);
+        customer.addElement(item);
 
-        model.addElement(firstSubmenu);
+        model.addElement(customer);
 
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu("Products");
-        firstSubmenu.setExpanded(false);
+        DefaultSubMenu products = new DefaultSubMenu("Products");
 
         item = new DefaultMenuItem("Cadastre");
         item.setUrl("#");
         item.setIcon("fa fa-shopping-cart");
-        secondSubmenu.addElement(item);
+        products.addElement(item);
 
         item = new DefaultMenuItem("Reports");
         item.setUrl("#");
         item.setIcon("fa fa-file-text-o");
-        secondSubmenu.addElement(item);
+        products.addElement(item);
 
-        model.addElement(secondSubmenu);
+        model.addElement(products);
+        
+        DefaultSubMenu settings = new DefaultSubMenu("Settings");
+        settings.setIcon("fa fa-shopping-cart");
+        
+        item = new DefaultMenuItem("System");
+        item.setUrl("#");
+        item.setIcon("fa fa-shopping-cart");
+        settings.addElement(item);
+
+        model.addElement(settings);
     }
 
     public MenuModel getModel() {
