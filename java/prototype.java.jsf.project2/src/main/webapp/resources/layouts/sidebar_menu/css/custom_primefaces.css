@@ -1,54 +1,49 @@
-/*menu*/
+/***font***/
 
-.ui-menu {
-    width: auto !important;
+.ui-widget {
+    font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
 }
 
-.ui-menu .ui-menuitem {
-    margin: 0 !important;
-}
+/***menu***/
 
-.ui-widget-header.ui-corner-all {
-    margin: 0 !important;
-}
-
-.ui-menuitem.ui-widget.ui-corner-all {
-    
-}
-
-.ui-widget-content {
-    background: #f5f5f5;
+.menu-content .ui-menu {
     border: none;
-    padding: 0px !important;
+    background: #f5f5f5;
+    width: auto;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
 }
 
-.ui-menu .ui-menuitem-link {
-    width: 94.2% !important;
-}
-
-.ui-panelgrid-cell {
-    border: none !important;
-}
-
-a.ui-menuitem-link.ui-corner-all {
-    padding: 13px 6px 13px 30px;
+/*submenu*/
+.menu-content .ui-menu-list .ui-widget-header.ui-corner-all {
+    padding: 8.05px 0;
+    border: none;
     border-radius: 0;
-}
-
-.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    width: 240px;
+    margin: 0;
     background: #eeeeee;
 }
 
-.ui-slidemenu-backward.ui-widget-header.ui-corner-all.ui-helper-clearfix {
-    padding: 8px 6px;
-    border-radius: 0;
-    border: none;
+.menu-content .ui-menu-list .ui-widget-header.ui-corner-all.ui-state-hover {
     background: #e0e0e0;
 }
 
-.ui-widget-header.ui-corner-all {
-    padding: 8px 6px;
+/* menu item*/
+.menu-content .ui-menuitem.ui-widget.ui-corner-all {
+    margin: 0;
+} 
+
+.menu-content .ui-menu .ui-menuitem-link {
+    padding: 11.5px 0 11.5px 25px;
+    width: 213px;
+}
+
+.ui-menuitem-link.ui-corner-all.ui-state-hover {
+    margin: 0;
     border-radius: 0;
     background: #e0e0e0;
+}
+
+.content .ui-panelgrid .ui-panelgrid-cell {
     border: none;
 }

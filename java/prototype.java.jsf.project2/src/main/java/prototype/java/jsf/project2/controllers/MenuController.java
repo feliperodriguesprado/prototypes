@@ -2,14 +2,14 @@ package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
-@ViewScoped
+@RequestScoped
 @Named
 public class MenuController implements Serializable {
 
@@ -26,12 +26,13 @@ public class MenuController implements Serializable {
         item.setIcon("fa fa-dashboard");
         item.setOutcome("dashboard");
         model.addElement(item);
-        
+
         DefaultSubMenu customer = new DefaultSubMenu("Customer");
+        customer.setExpanded(false);
 
         item = new DefaultMenuItem("Cadastre");
         item.setOutcome("customerCadastre");
-        item.setIcon("fa fa-pencil-square-o");
+        item.setIcon("fa fa-users");
         customer.addElement(item);
 
         item = new DefaultMenuItem("Reports");
@@ -42,6 +43,7 @@ public class MenuController implements Serializable {
         model.addElement(customer);
 
         DefaultSubMenu products = new DefaultSubMenu("Products");
+        products.setExpanded(false);
 
         item = new DefaultMenuItem("Cadastre");
         item.setUrl("#");
@@ -54,13 +56,13 @@ public class MenuController implements Serializable {
         products.addElement(item);
 
         model.addElement(products);
-        
+
         DefaultSubMenu settings = new DefaultSubMenu("Settings");
-        settings.setIcon("fa fa-shopping-cart");
-        
+        settings.setExpanded(false);
+
         item = new DefaultMenuItem("System");
         item.setUrl("#");
-        item.setIcon("fa fa-shopping-cart");
+        item.setIcon("fa fa-cog");
         settings.addElement(item);
 
         model.addElement(settings);
