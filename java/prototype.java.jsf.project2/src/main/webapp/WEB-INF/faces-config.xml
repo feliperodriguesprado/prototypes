@@ -15,13 +15,11 @@
         <navigation-case>
             <from-outcome>dashboard</from-outcome>
             <to-view-id>dashboard.xhtml</to-view-id>
-            <display-name>dashboard</display-name>
         </navigation-case>
         
         <navigation-case>
-            <from-outcome>customerCadastre</from-outcome>
-            <to-view-id>customer/cadastre.xhtml</to-view-id>
-            <display-name>customer-cadastre</display-name>
+            <from-outcome>userRegister</from-outcome>
+            <to-view-id>user/register.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
