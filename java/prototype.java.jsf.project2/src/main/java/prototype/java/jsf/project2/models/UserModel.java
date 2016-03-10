@@ -1,47 +1,27 @@
 package prototype.java.jsf.project2.models;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
-@Table(name = "users")
-public class UserModel implements Serializable {
+public class UserModel extends PeopleModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "user_id")
-    @NotEmpty(message = "User ID is required")
+    @NotNull(message = "User ID is required")
     private Long userId;
 
-    @Column(name = "username")
     @NotEmpty(message = "Username is required")
     private String userName;
 
-    @Column(name = "email")
     @NotEmpty(message = "Email is required")
     private String email;
 
-    @Column(name = "password")
     @NotEmpty(message = "Password is required")
     private String password;
 
-    @Column(name = "repeat_password")
     @NotEmpty(message = "Repeat password is required")
     private String repeatPassword;
-
-    // References:
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @Column(name = "people")
-    private PeopleModel people;
 
     public Long getUserId() {
         return userId;
@@ -83,17 +63,9 @@ public class UserModel implements Serializable {
         this.repeatPassword = repeatPassword;
     }
 
-    public PeopleModel getPeople() {
-        return people;
-    }
-
-    public void setPeople(PeopleModel people) {
-        this.people = people;
-    }
-
     @Override
     public String toString() {
-        return "UserModel{" + "userId=" + userId + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + ", people=" + people + '}';
+        return "UserModel {" + "peopleId=" + getPeopleId() + ", userId=" + userId + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + '}';
     }
 
 }
