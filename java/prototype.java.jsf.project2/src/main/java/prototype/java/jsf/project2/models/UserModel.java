@@ -13,14 +13,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
+@SequenceGenerator(name = "userSequence", sequenceName = "user_id_seq", allocationSize = 1)
 public class UserModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
-    @SequenceGenerator(name = "user_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSequence")
     private int userId;
 
     @NotEmpty(message = "Username is required")
