@@ -1,7 +1,6 @@
 package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -10,6 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -43,22 +43,23 @@ public class UserController implements Serializable {
 
         System.out.println("Size constraint validation: " + constraintViolations.size());
         System.out.println("Message(s): ");
-        
+
         constraintViolations.stream().forEach((constraintViolation) -> {
             System.out.println(constraintViolation.getMessage());
         });
-        
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
         EntityManager em = emf.createEntityManager();
-//        EntityTransaction transaction = em.getTransaction();
-//
-//        transaction.begin();
-//        em.persist(people);
-//        transaction.commit();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+        em.persist(user);
+        transaction.commit();
         em.close();
         emf.close();
 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User register", user.toString()));
+        user = new UserModel();
     }
 
 }
