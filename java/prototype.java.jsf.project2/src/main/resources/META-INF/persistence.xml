@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" 
-             xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="postgresql" transaction-type="JTA">
+    
         <jta-data-source>jdbc/PostgreSQL</jta-data-source>
-        <class>prototype.java.jsf.project2.models.UserModel</class>
+    
+        <class>prototype.java.jsf.project2.models.PeoplePO</class>
+        <class>prototype.java.jsf.project2.models.UserPO</class>
+    
         <properties>
             <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
+        
     </persistence-unit>
 </persistence>

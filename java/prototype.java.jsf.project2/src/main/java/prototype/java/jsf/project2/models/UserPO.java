@@ -1,11 +1,15 @@
 package prototype.java.jsf.project2.models;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -14,14 +18,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "users")
 @SequenceGenerator(name = "userSequence", sequenceName = "user_id_seq", allocationSize = 1)
-public class UserModel implements Serializable {
+public class UserPO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSequence")
-    private int userId;
+    private long id;
 
     @NotEmpty(message = "Username is required")
     @Column(name = "username")
@@ -39,12 +43,16 @@ public class UserModel implements Serializable {
     @NotEmpty(message = "Repeat password is required")
     private String repeatPassword;
 
-    public int getUserId() {
-        return userId;
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "people_id")
+    private PeoplePO people;
+
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -79,9 +87,17 @@ public class UserModel implements Serializable {
         this.repeatPassword = repeatPassword;
     }
 
+    public PeoplePO getPeople() {
+        return people;
+    }
+
+    public void setPeople(PeoplePO people) {
+        this.people = people;
+    }
+
     @Override
     public String toString() {
-        return "UserModel {" + "userId=" + userId + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + '}';
+        return "UserPO{" + "id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + ", people=" + people + '}';
     }
 
 }
