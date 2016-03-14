@@ -1,7 +1,9 @@
 package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
+import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,6 +13,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
@@ -64,9 +67,15 @@ public class UserController implements Serializable {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
         EntityManager em = emf.createEntityManager();
-
+        
         try {
             em.getTransaction().begin();
+            
+            em.unwrap(java.sql.Connection.class).setAutoCommit(false);
+            // references:
+            // http://sofc.developer-works.com/article/21717711/EclipseLink+%3A+JPA+Entitty+Manager
+            // http://wiki.eclipse.org/EclipseLink/Examples/JPA/EMAPI#Getting_a_JDBC_Connection_from_an_EntityManager
+            
             em.persist(user);
             em.getTransaction().commit();
 
@@ -83,10 +92,11 @@ public class UserController implements Serializable {
 
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
-                em.close();
-                emf.close();
             }
-
+            
+            em.close();
+            emf.close();
+            
             errorPersist = e.getMessage();
             System.out.println("Error: " + errorPersist);
         }
