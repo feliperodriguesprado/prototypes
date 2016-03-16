@@ -5,7 +5,7 @@ function LayoutCtrl() {
     function setEvents() {
         setEventsBtnToggle();
         setEventsOverlayBlack();
-        setEventMouseOver();
+        //setEventMouseOver();
     }
 
     function setEventMouseOver() {
@@ -19,6 +19,11 @@ function LayoutCtrl() {
 
     function setEventsBtnToggle() {
         $('.btn-toggle').on('click', function (event) {
+            toggleMenu();
+            event.preventDefault();
+        });
+        
+        $('.btn-toggle-left').on('click', function (event) {
             toggleMenu();
             event.preventDefault();
         });

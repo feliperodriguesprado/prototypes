@@ -103,6 +103,35 @@ nav {
 
 section {
     margin-top: 60px;
+    padding: 0 50px;
+}
+
+.btn-toggle-left {
+    display: block;
+    position: absolute;
+    left: 0;
+    background: #e0e0e0;
+    height: 40px;
+    top: 65px;
+    width: 30px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+.btn-toggle-left :hover {
+    height: 40px;
+    left: 0;
+    top: 65px;
+    width: 30px;
+    background: #eeeeee;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.btn-toggle-left > i {
+    color: #9e9e9e;
 }
 
 .title-content {
@@ -119,13 +148,10 @@ section {
 
 .content {
     margin: 0 auto;
-    /*padding: 0 10px;*/
 }
 
 .button-panel {
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
+
 }
 
 /***footer***/
@@ -166,5 +192,14 @@ footer {
 
     .btn-toggle {
         display: block;
+    }
+
+    .btn-toggle-left {
+        display: none;
+    }
+
+    /***content***/
+    section {
+        padding: 0;
     }
 }
