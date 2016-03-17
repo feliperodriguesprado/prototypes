@@ -15,8 +15,15 @@
 
             <h:form id="formCustomer">
 
-                <div class="ui-fluid">
+                <p:toolbar styleClass="button-panel">
+                    <f:facet name="left">
+                        <p:commandButton type="button" value="Save" actionListener="#{userController.save}" update="formCustomer" icon="fa fa-save" />
+                        <p:commandButton type="button" value="Cancel" icon="fa fa-arrow-left"/>
+                    </f:facet>
+                </p:toolbar>
 
+                <div class="ui-fluid">
+                    
                     <p:messages id="message" severity="info, warning" showDetail="true" />
 
                     <p:panelGrid columns="2" columnClasses="ui-grid-col-4, ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" >
@@ -42,15 +49,6 @@
                             <p:outputLabel for="repeatPassword" value="Repeat password" />
                             <p:password id="repeatPassword" value="#{userController.user.repeatPassword}" />
                             <p:message for="repeatPassword" ></p:message>
-                        </p:column>
-                    </p:panelGrid>
-
-                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank button-panel" >
-                        <p:column>
-                            <p:commandButton value="Cancel" />
-                        </p:column>
-                        <p:column>
-                            <p:commandButton value="Save" action="#{userController.save}" update="formCustomer" />
                         </p:column>
                     </p:panelGrid>
                 </div>

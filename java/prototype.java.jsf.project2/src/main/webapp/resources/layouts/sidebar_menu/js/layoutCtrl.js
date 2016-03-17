@@ -18,7 +18,7 @@ function LayoutCtrl() {
     }
 
     function setEventsBtnToggle() {
-        $('.btn-toggle').on('click', function (event) {
+        $('.btn-toggle-right').on('click', function (event) {
             toggleMenu();
             event.preventDefault();
         });
