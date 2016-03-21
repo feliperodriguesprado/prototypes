@@ -1,22 +1,13 @@
 package prototype.java.jsf.project2.controllers;
 
 import java.io.Serializable;
-import java.sql.Connection;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.FlushModeType;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -24,12 +15,15 @@ import javax.validation.ValidatorFactory;
 import prototype.java.jsf.project2.enums.PeopleType;
 import prototype.java.jsf.project2.models.PeoplePO;
 import prototype.java.jsf.project2.models.UserPO;
+import prototype.java.jsf.project2.services.IUserService;
 
 @ViewScoped
 @Named
 public class UserController implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Inject
+    private IUserService userService;
     private Validator validator;
     private PeoplePO people;
     private UserPO user;
@@ -46,12 +40,10 @@ public class UserController implements Serializable {
 
     public void save() {
 
-        String errorPersist = null;
-
         people.setName(user.getUserName());
         people.setType(PeopleType.USER);
         user.setPeople(people);
-        
+
         System.out.println(user);
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -65,61 +57,15 @@ public class UserController implements Serializable {
             System.out.println(constraintViolation.getMessage());
         });
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
-        EntityManager em = emf.createEntityManager();
-        
         try {
-            em.getTransaction().begin();
-            
-            em.unwrap(java.sql.Connection.class).setAutoCommit(false);
-            // references:
-            // http://sofc.developer-works.com/article/21717711/EclipseLink+%3A+JPA+Entitty+Manager
-            // http://wiki.eclipse.org/EclipseLink/Examples/JPA/EMAPI#Getting_a_JDBC_Connection_from_an_EntityManager
-            
-            em.persist(user);
-            em.getTransaction().commit();
-
-            Query query = em.createQuery("select p from UserPO p", UserPO.class);
-            List<UserPO> userList = query.getResultList();
-
-            userList.stream().forEach((userPO) -> {
-                System.out.println(userPO);
-            });
-
-            em.close();
-            emf.close();
-        } catch (Exception e) {
-
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            
-            em.close();
-            emf.close();
-            
-            errorPersist = e.getMessage();
-            System.out.println("Error: " + errorPersist);
+            userService.create(user);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User register", user.toString()));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "User register", ex.getMessage()));
         }
 
-        if (errorPersist == null || errorPersist.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                    FacesMessage.SEVERITY_INFO,
-                    "User register",
-                    user.toString()));
-
-            people = new PeoplePO();
-            user = new UserPO();
-        } else if (errorPersist.contains("uk_users_username")) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                    FacesMessage.SEVERITY_WARN,
-                    "User register",
-                    String.format("Username %s already exists", user.getUserName())));
-        } else if (errorPersist.contains("uk_users_email")) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-                    FacesMessage.SEVERITY_WARN,
-                    "User register",
-                    String.format("Email %s already exists", user.getEmail())));
-        }
+        people = new PeoplePO();
+        user = new UserPO();
     }
 
 }

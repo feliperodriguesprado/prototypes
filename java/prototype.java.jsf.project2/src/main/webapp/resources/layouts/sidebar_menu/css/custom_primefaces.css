@@ -44,6 +44,25 @@
     background: #e0e0e0;
 }
 
+/**content***/
+
+.content .ui-fluid {
+    margin-top: -30px;
+}
+
+.content .ui-fluid .ui-messages.ui-widget {
+    margin: 0 10px 0px 10px;
+}
+
 .content .ui-panelgrid .ui-panelgrid-cell {
     border: none;
+}
+
+/*toolbar*/
+.ui-toolbar.ui-widget.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+    padding: 0;
+}
+
+.ui-toolbar .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
+    margin: 2.5px 1px 3px 3px;
 }
