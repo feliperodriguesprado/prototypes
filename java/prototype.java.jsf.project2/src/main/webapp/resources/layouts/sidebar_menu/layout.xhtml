@@ -23,7 +23,7 @@
     <h:body>
 
         <div class="overlay"></div>
-        
+
         <header>
             <div class="btn-toggle-right">
                 <i class="fa fa-bars fa-2x"></i>
@@ -34,9 +34,9 @@
         </header>
 
         <nav class="sidebar">
-            
+
             <div class="menu-title">
-                <a href="/">Prototype 2</a>
+                <a href="#{request.contextPath}">Prototype 2</a>
             </div>
 
             <div class="menu-content">
@@ -47,11 +47,13 @@
             </div>
         </nav>
 
-        <section>
-            
+        <aside>
             <div class="btn-toggle-left">
-                <i class="fa fa-angle-right fa-2x"></i>
+                <i class="fa fa-bars fa-2x"></i>
             </div>
+        </aside>
+
+        <section>
             <ui:insert name="content" />
         </section>
 

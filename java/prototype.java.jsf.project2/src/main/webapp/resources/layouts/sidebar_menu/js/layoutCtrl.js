@@ -5,16 +5,6 @@ function LayoutCtrl() {
     function setEvents() {
         setEventsBtnToggle();
         setEventsOverlayBlack();
-        //setEventMouseOver();
-    }
-
-    function setEventMouseOver() {
-        $(window).on('mousemove', function (event) {
-            if (event.pageX < 10 && !isSidebarShow) {
-                toggleMenu();
-                event.preventDefault();
-            }
-        });
     }
 
     function setEventsBtnToggle() {
@@ -23,7 +13,12 @@ function LayoutCtrl() {
             event.preventDefault();
         });
         
-        $('.btn-toggle-left').on('click', function (event) {
+        $('.btn-toggle-right').on('mousemove', function (event) {
+            toggleMenu();
+            event.preventDefault();
+        });
+
+        $('.btn-toggle-left').on('mousemove' /*'click'*/, function (event) {
             toggleMenu();
             event.preventDefault();
         });

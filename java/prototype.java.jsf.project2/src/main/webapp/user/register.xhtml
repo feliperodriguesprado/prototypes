@@ -15,17 +15,28 @@
 
             <h:form id="formCustomer">
 
-                <p:toolbar styleClass="button-panel">
-                    <f:facet name="left">
-                        <p:commandButton value="Save" actionListener="#{userController.save}" update="formCustomer" icon="fa fa-save" />
-                        <p:commandButton value="Cancel" icon="fa fa-arrow-left"/>
-                    </f:facet>
-                </p:toolbar>
-
-                
-                
-                <div class="ui-fluid">
+                <p:menubar styleClass="button-panel">
                     
+                    <p:submenu label="Actions" icon="ui-icon-document">
+                        <p:submenu label="Submenu action" icon="ui-icon-contact">  
+                            <p:menuitem value="Item 1" icon="fa fa-save" />
+                            <p:menuitem value="Item 2" icon="fa fa-arrow-left"/>
+                        </p:submenu>
+                        
+                        <p:menuitem value="Save" actionListener="#{userController.save}" update="formCustomer" icon="fa fa-save" />
+                        <p:separator />
+                        <p:menuitem value="Cancel" icon="fa fa-arrow-left"/>
+                    </p:submenu>
+
+                    <f:facet name="options">
+                        
+                    </f:facet>
+                </p:menubar>
+
+
+
+                <div class="ui-fluid">
+
                     <p:messages id="message" severity="info, warning" showDetail="true" />
 
                     <p:panelGrid columns="2" columnClasses="ui-grid-col-4, ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" >

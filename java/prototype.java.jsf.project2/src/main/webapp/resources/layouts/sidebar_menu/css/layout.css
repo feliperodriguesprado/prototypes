@@ -99,37 +99,42 @@ nav {
     top: 70px;
 }
 
-/***content***/
+/***aside***/
 
-section {
-    margin-top: 60px;
-    padding: 0 40px;
+aside {
+    height: 100%;
+    background: #f5f5f5;
+    position: absolute;
+    width: 50px;
+    top: 0;
+    display: block;
 }
 
 .btn-toggle-left {
     display: block;
-    position: absolute;
-    left: 0;
-    background: #e0e0e0;
+    background: #eeeeee;
     height: 51px;
-    top: 60px;
-    width: 15px;
     cursor: pointer;
-    padding-left: 15px;
+    text-align: center;
+    margin-top: 60px;
 }
 
 .btn-toggle-left:hover {
     height: 51px;
-    top: 60px;
-    left: 0;
-    width: 15px;
-    background: #f5f5f5;
+    background: #e0e0e0;
 }
 
 .btn-toggle-left > i {
     color: #555555;
     line-height: 50px;
-    margin-left: -5px;
+
+}
+
+/***content***/
+
+section {
+    margin: 60px 0;
+    padding: 0 10px 0 60px;
 }
 
 .title-content {
@@ -196,7 +201,14 @@ footer {
         display: none;
     }
 
+    /***aside***/
+
+    aside {
+        display: none;
+    }
+
     /***content***/
+
     section {
         padding: 0;
     }
