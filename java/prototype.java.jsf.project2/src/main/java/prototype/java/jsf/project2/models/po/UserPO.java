@@ -1,4 +1,4 @@
-package prototype.java.jsf.project2.models;
+package prototype.java.jsf.project2.models.po;
 
 import java.io.Serializable;
 import javax.persistence.CascadeType;

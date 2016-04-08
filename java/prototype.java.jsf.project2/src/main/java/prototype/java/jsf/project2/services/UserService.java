@@ -7,14 +7,35 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import prototype.java.jsf.project2.models.UserPO;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import org.modelmapper.ModelMapper;
+import prototype.java.jsf.project2.models.dto.UserDTO;
+import prototype.java.jsf.project2.models.po.UserPO;
 
 @RequestScoped
 public class UserService implements IUserService {
 
     @Override
-    public UserPO create(UserPO user) throws Exception {
+    public UserDTO create(UserDTO user) throws Exception {
+        
+        ModelMapper modelMapper = new ModelMapper();
+        UserPO userPO = modelMapper.map(user, UserPO.class);
 
+        Validator validator;
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
+        Set<ConstraintViolation<UserPO>> constraintViolations = validator.validate(userPO);
+
+        System.out.println("Size constraint validation: " + constraintViolations.size());
+        System.out.println("Message(s): ");
+
+        constraintViolations.stream().forEach((constraintViolation) -> {
+            System.out.println(constraintViolation.getMessage());
+        });
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
         EntityManager em = emf.createEntityManager();
 
@@ -26,14 +47,14 @@ public class UserService implements IUserService {
             // http://sofc.developer-works.com/article/21717711/EclipseLink+%3A+JPA+Entitty+Manager
             // http://wiki.eclipse.org/EclipseLink/Examples/JPA/EMAPI#Getting_a_JDBC_Connection_from_an_EntityManager
 
-            em.persist(user);
+            em.persist(userPO);
             em.getTransaction().commit();
 
             Query query = em.createQuery("select p from UserPO p", UserPO.class);
             List<UserPO> userList = query.getResultList();
 
-            userList.stream().forEach((userPO) -> {
-                System.out.println(userPO);
+            userList.stream().forEach((userPO1) -> {
+                System.out.println(userPO1);
             });
 
             em.close();
@@ -60,7 +81,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Set<UserPO> getAll() {
+    public Set<UserDTO> getAll() {
         return null;
     }
 
