@@ -1,12 +1,23 @@
 package prototype.java.jsf.project2.models.dto;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserDTO {
 
     private long id;
+    
+    @NotEmpty(message = "Username is required")
     private String userName;
+    
+    @NotEmpty(message = "Email is required")
     private String email;
+    
+    @NotEmpty(message = "Password is required")
     private String password;
+    
+    @NotEmpty(message = "Repeat password is required")
     private String repeatPassword;
+    
     private PeopleDTO people;
 
     public long getId() {

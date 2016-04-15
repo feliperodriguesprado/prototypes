@@ -39,10 +39,6 @@ public class UserPO implements Serializable {
     @NotEmpty(message = "Password is required")
     private String password;
 
-    @Transient
-    @NotEmpty(message = "Repeat password is required")
-    private String repeatPassword;
-
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "people_id")
     private PeoplePO people;
@@ -79,14 +75,6 @@ public class UserPO implements Serializable {
         this.password = password;
     }
 
-    public String getRepeatPassword() {
-        return repeatPassword;
-    }
-
-    public void setRepeatPassword(String repeatPassword) {
-        this.repeatPassword = repeatPassword;
-    }
-
     public PeoplePO getPeople() {
         return people;
     }
@@ -97,7 +85,7 @@ public class UserPO implements Serializable {
 
     @Override
     public String toString() {
-        return "UserPO{" + "id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + ", people=" + people + '}';
+        return "UserPO{" + "id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", people=" + people + '}';
     }
 
 }
