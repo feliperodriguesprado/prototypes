@@ -20,7 +20,7 @@ public class UserService implements IUserService {
 
     @Override
     public UserDTO create(UserDTO user) throws Exception {
-        
+
         ModelMapper modelMapper = new ModelMapper();
         UserPO userPO = modelMapper.map(user, UserPO.class);
 
@@ -35,7 +35,7 @@ public class UserService implements IUserService {
         constraintViolations.stream().forEach((constraintViolation) -> {
             System.out.println(constraintViolation.getMessage());
         });
-        
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
         EntityManager em = emf.createEntityManager();
 
@@ -81,8 +81,17 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Set<UserDTO> getAll() {
-        return null;
+    public List<UserDTO> getAll() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgresql");
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createQuery("select p from UserPO p", UserPO.class);
+        List<UserPO> userList = query.getResultList();
+
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserDTO> userListDTO = modelMapper.map(userList, List.class);
+
+        return userListDTO;
     }
 
 }

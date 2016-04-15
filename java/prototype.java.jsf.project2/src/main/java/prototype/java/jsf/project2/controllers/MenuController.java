@@ -25,8 +25,8 @@ public class MenuController implements Serializable {
         model.addElement(item);
         DefaultSubMenu customer = new DefaultSubMenu("Users");
         customer.setExpanded(false);
-        item = new DefaultMenuItem("Register");
-        item.setOutcome("userRegister");
+        item = new DefaultMenuItem("List");
+        item.setOutcome("userList");
         item.setIcon("fa fa-users");
         customer.addElement(item);
         model.addElement(customer);
