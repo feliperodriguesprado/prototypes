@@ -14,19 +14,20 @@ import javax.validation.ValidatorFactory;
 import org.modelmapper.ModelMapper;
 import prototype.java.jsf.project2.models.dto.UserDTO;
 import prototype.java.jsf.project2.models.po.UserPO;
-import prototype.java.jsf.project2.datasource.settings.IDatasource;
 import prototype.java.jsf.project2.datasource.connections.ConnectionJPA;
+import prototype.java.jsf.project2.datasource.enums.Database;
+import prototype.java.jsf.project2.datasource.qualifiers.Connection;
 
 @RequestScoped
 public class UserService implements IUserService {
 
     @Inject
-    private IDatasource datasource;
+    @Connection(database = Database.POSTGRESQL)
+    private ConnectionJPA connectionJPAPostgreSQL;
 
     @Override
     public UserDTO create(UserDTO user) throws Exception {
 
-        ConnectionJPA conJPAPostgreSQL;
         EntityManager em;
         ModelMapper modelMapper = new ModelMapper();
         UserPO userPO = modelMapper.map(user, UserPO.class);
@@ -43,9 +44,8 @@ public class UserService implements IUserService {
             System.out.println(constraintViolation.getMessage());
         });
 
-        conJPAPostgreSQL = datasource.getConnectionJPAPostgreSQL();
-        conJPAPostgreSQL.begin();
-        em = conJPAPostgreSQL.getEntityManager();
+        connectionJPAPostgreSQL.begin();
+        em = connectionJPAPostgreSQL.getEntityManager();
 
         try {
             if (userPO.getId() == 0) {
@@ -61,12 +61,11 @@ public class UserService implements IUserService {
                 System.out.println(userPO1);
             });
 
-            conJPAPostgreSQL.commit();
-            conJPAPostgreSQL.end();
+            connectionJPAPostgreSQL.commit();
             return user;
 
         } catch (Exception e) {
-            conJPAPostgreSQL.rollback();
+            connectionJPAPostgreSQL.rollback();
 
             if (e.getMessage().contains("uk_users_username")) {
                 throw new Exception(String.format("Username %s already exists", user.getUserName()));
@@ -80,9 +79,8 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> getAll() throws Exception {
-
-        ConnectionJPA conJPAPostgreSQL = datasource.getConnectionJPAPostgreSQL();
-        EntityManager em = conJPAPostgreSQL.getEntityManager();
+        
+        EntityManager em = connectionJPAPostgreSQL.getEntityManager();
 
         Query query = em.createQuery("select p from UserPO p", UserPO.class);
         List<UserPO> userList = query.getResultList();
@@ -96,23 +94,18 @@ public class UserService implements IUserService {
             userListDTO.add(userDTO);
         }
 
-        conJPAPostgreSQL.end();
         return userListDTO;
     }
 
     @Override
     public UserDTO getById(long id) throws Exception {
 
-        ConnectionJPA conJPAPostgreSQL = datasource.getConnectionJPAPostgreSQL();
-        EntityManager em = conJPAPostgreSQL.getEntityManager();
-
-        Query query = em.createQuery("select p from UserPO p where p.id = :id", UserPO.class);
-        UserPO userPO = (UserPO) query.setParameter("id", id).getSingleResult();
+        EntityManager em = connectionJPAPostgreSQL.getEntityManager();
+        UserPO userPO = (UserPO) em.find(UserPO.class, id);
 
         ModelMapper modelMapper = new ModelMapper();
         UserDTO userDTO = modelMapper.map(userPO, UserDTO.class);
 
-        conJPAPostgreSQL.end();
         return userDTO;
 
     }

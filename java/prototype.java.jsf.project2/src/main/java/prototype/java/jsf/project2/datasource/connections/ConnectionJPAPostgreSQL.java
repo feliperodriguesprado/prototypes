@@ -1,17 +1,33 @@
 package prototype.java.jsf.project2.datasource.connections;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import prototype.java.jsf.project2.datasource.enums.Database;
+import prototype.java.jsf.project2.datasource.qualifiers.Connection;
 
+@Dependent
+@Connection(database = Database.POSTGRESQL)
 public class ConnectionJPAPostgreSQL implements ConnectionJPA {
 
-    private final EntityManagerFactory entityManagerFactory;
-    private final EntityManager entityManager;
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
 
-    public ConnectionJPAPostgreSQL() {
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("Object " + this.toString() + " built...");
         entityManagerFactory = Persistence.createEntityManagerFactory("postgresql");
         entityManager = entityManagerFactory.createEntityManager();
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        System.out.println("Object " + this.toString() + " destroyed...");
+        entityManager.close();
+        entityManagerFactory.close();
     }
 
     @Override
@@ -40,12 +56,6 @@ public class ConnectionJPAPostgreSQL implements ConnectionJPA {
         if (entityManager.getTransaction().isActive()) {
             entityManager.getTransaction().rollback();
         }
-    }
-
-    @Override
-    public void end() throws Exception {
-        entityManager.close();
-        entityManagerFactory.close();
     }
 
 }

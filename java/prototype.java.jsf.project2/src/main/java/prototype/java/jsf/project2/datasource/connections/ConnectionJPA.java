@@ -11,6 +11,4 @@ public interface ConnectionJPA {
     void commit() throws Exception;
 
     void rollback() throws Exception;
-
-    void end() throws Exception;
 }
