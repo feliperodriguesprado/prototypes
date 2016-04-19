@@ -19,6 +19,8 @@ public class UserController implements Serializable {
     private static final long serialVersionUID = 1L;
     @Inject
     private IUserService userService;
+
+    private long paramUserId;
     private PeopleDTO people;
     private UserDTO user;
 
@@ -26,6 +28,16 @@ public class UserController implements Serializable {
     public void init() {
         people = new PeopleDTO();
         user = new UserDTO();
+    }
+
+    public void onload() {
+        if (paramUserId > 0) {
+            try {
+                user = userService.getById(paramUserId);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
     }
 
     public UserDTO getUser() {
@@ -49,6 +61,14 @@ public class UserController implements Serializable {
 
         people = new PeopleDTO();
         user = new UserDTO();
+    }
+
+    public long getParamUserId() {
+        return paramUserId;
+    }
+
+    public void setParamUserId(long paramUserId) {
+        this.paramUserId = paramUserId;
     }
 
 }

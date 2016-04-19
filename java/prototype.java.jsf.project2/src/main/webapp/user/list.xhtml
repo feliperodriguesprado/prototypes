@@ -15,25 +15,27 @@
 
             <h:form id="formCustomer">
 
-                <div class="ui-fluid">
+                <p:messages id="message" severity="info, warning" showDetail="true" />
 
-                    <p:messages id="message" severity="info, warning" showDetail="true" />
+                <p:dataTable id="userList" var="user" value="#{userListController.userList}" rowKey="#{user.id}"
+                             selection="#{userListController.selectedUser}" selectionMode="single" reflow="true">
 
-                    <p:dataTable var="user" value="#{userListController.userList}" reflow="true" rows="5" paginator="true" rowKey="#{user.id}"
-                                 selection="#{userListController.selectedUser}" selectionMode="single">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{user.id}" />
-                        </p:column>
+                    <p:ajax event="rowDblselect" listener="#{userListController.listenerRowDblselect}" />
 
-                        <p:column headerText="Username">
-                            <h:outputText value="#{user.userName}" />
-                        </p:column>
+                    <p:column headerText="Id">
+                        <h:outputText value="#{user.id}" />
+                    </p:column>
 
-                        <p:column headerText="Email">
-                            <h:outputText value="#{user.email}" />
-                        </p:column>
-                    </p:dataTable>
-                </div>
+                    <p:column headerText="Username">
+                        <h:outputText value="#{user.userName}" />
+                    </p:column>
+
+                    <p:column headerText="Email">
+                        <h:outputText value="#{user.email}" />
+                    </p:column>
+
+                </p:dataTable>
+
             </h:form>
         </div>
     </ui:define>

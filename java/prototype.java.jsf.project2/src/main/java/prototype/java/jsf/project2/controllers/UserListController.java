@@ -3,6 +3,8 @@ package prototype.java.jsf.project2.controllers;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,6 +27,17 @@ public class UserListController implements Serializable {
             userList = userService.getAll();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void listenerRowDblselect() {        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        try {
+            ec.redirect("register.xhtml?userId=" + selectedUser.getId());
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
         }
     }
 

@@ -7,6 +7,11 @@
 
     <ui:define name="content">
 
+        <f:metadata>
+            <f:viewParam name="userId" value="#{userController.paramUserId}" />
+            <f:viewAction action="#{userController.onload}" />
+        </f:metadata>
+
         <div class="title-content">
             <h2>User register</h2>
         </div>
@@ -16,24 +21,22 @@
             <h:form id="formCustomer">
 
                 <p:menubar styleClass="button-panel">
-                    
+
                     <p:submenu label="Actions" icon="ui-icon-document">
                         <p:submenu label="Submenu action" icon="ui-icon-contact">  
                             <p:menuitem value="Item 1" icon="fa fa-save" />
                             <p:menuitem value="Item 2" icon="fa fa-arrow-left"/>
                         </p:submenu>
-                        
+
                         <p:menuitem value="Save" actionListener="#{userController.save}" update="formCustomer" icon="fa fa-save" />
                         <p:separator />
                         <p:menuitem value="Cancel" icon="fa fa-arrow-left"/>
                     </p:submenu>
 
                     <f:facet name="options">
-                        
+
                     </f:facet>
                 </p:menubar>
-
-
 
                 <div class="ui-fluid">
 
