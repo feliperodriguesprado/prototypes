@@ -59,13 +59,13 @@
                         <h:outputText value="#{user.email}" />
                     </p:column>
 
-                    <p:column class="columnActionDataTable">
+                    <p:column class="columnWithLinkDataTable">
                         <p:commandLink title="Edit" action="#{userListController.editUserFromList(user)}" >
                             <i class="fa fa-fw fa-edit"></i>
                         </p:commandLink>
                     </p:column>
 
-                    <p:column class="columnActionDataTable">
+                    <p:column class="columnWithLinkDataTable">
                         <p:commandLink title="Remove" action="#{userListController.removeUserFromList(user)}" >
                             <i class="fa fa-fw fa-remove"></i>
                         </p:commandLink>
