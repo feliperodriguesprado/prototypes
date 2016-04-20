@@ -56,20 +56,17 @@ public class UserController implements Serializable {
         try {
             userService.create(user);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User register", user.toString()));
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ExternalContext ec = fc.getExternalContext();
+
+            try {
+                ec.redirect("list.xhtml");
+            } catch (Exception e) {
+                System.out.println("error: " + e.getMessage());
+            }
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "User register", ex.getMessage()));
-        }
-
-        people = new PeopleDTO();
-        user = new UserDTO();
-
-        FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-
-        try {
-            ec.redirect("list.xhtml");
-        } catch (Exception e) {
-            System.out.println("error: " + e.getMessage());
         }
     }
 

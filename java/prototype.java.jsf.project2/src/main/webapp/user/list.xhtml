@@ -59,9 +59,16 @@
                         <h:outputText value="#{user.email}" />
                     </p:column>
 
-                    <p:column headerText="Actions" class="columnActionDataTable">
-                        <p:commandButton icon="fa fa-fw fa-edit" title="Edit" action="#{userListController.editUserFromList(user)}" />
-                        <p:commandButton icon="fa fa-remove" title="Remove" action="#{userListController.removeUserFromList(user)}" />
+                    <p:column class="columnActionDataTable">
+                        <p:commandLink title="Edit" action="#{userListController.editUserFromList(user)}" >
+                            <i class="fa fa-fw fa-edit"></i>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column class="columnActionDataTable">
+                        <p:commandLink title="Remove" action="#{userListController.removeUserFromList(user)}" >
+                            <i class="fa fa-fw fa-remove"></i>
+                        </p:commandLink>
                     </p:column>
 
                 </p:dataTable>

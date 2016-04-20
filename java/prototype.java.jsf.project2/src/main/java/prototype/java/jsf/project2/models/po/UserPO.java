@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
