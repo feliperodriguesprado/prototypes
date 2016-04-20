@@ -3,6 +3,7 @@ package prototype.java.jsf.project2.controllers;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -61,6 +62,15 @@ public class UserController implements Serializable {
 
         people = new PeopleDTO();
         user = new UserDTO();
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        try {
+            ec.redirect("list.xhtml");
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+        }
     }
 
     public long getParamUserId() {

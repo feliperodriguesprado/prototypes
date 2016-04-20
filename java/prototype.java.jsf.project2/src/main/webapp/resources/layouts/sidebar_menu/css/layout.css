@@ -16,7 +16,7 @@ html, body {
 /***header***/
 
 header {
-    background-color: #26a69a;
+    background-color: #0081c2;
     top: 0;
     position: fixed;
     width: 100%;
@@ -33,7 +33,7 @@ header {
 
 .title-header a {
     text-decoration: none;
-    font-weight: 100;
+    font-weight: 500;;
     color: white;
     font-size: 2em;
 }
@@ -83,8 +83,8 @@ nav {
 
 .menu-title a {
     text-decoration: none;
-    font-weight: 100;
-    color: #004d40;
+    color: #333333;
+    font-weight: 500;
     font-size: 2em;
 }
 
@@ -139,13 +139,13 @@ section {
 .title-content {
     margin: 60px 0px 20px 0px;
     height: 50px;
-    border-bottom: 1px solid #26a69a;
-    color: #004d40;
+    border-bottom: 1px solid #333333;
     line-height: 50px;
 }
 
 .title-content h2 {
-    font-weight: 100;
+    color: #333333;
+    font-weight: 500;
 }
 
 .content {
@@ -153,7 +153,12 @@ section {
 }
 
 .button-panel {
-    margin: 0 10px 40px 10px;
+    margin: 30px 0px;
+}
+
+.columnActionDataTable {
+    width: 64px;
+    text-align: center;
 }
 
 /***footer***/
@@ -163,11 +168,12 @@ footer {
     position: absolute;
     width: 100%;
     height: 30px;
-    background-color: #26a69a;
+    background-color: #0081c2;
     z-index: 8;
     text-align: center;
     line-height: 5px;
     color: white;
+    font-weight: 500;
 }
 
 /***overlay***/
@@ -180,7 +186,7 @@ footer {
     width: 100%;
     height: 100%;
     z-index: 9;
-    background-color: black;
+    background-color: #000000;
     opacity: 0.5;
 }
 

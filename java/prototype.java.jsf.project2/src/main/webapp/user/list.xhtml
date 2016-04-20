@@ -17,21 +17,51 @@
 
                 <p:messages id="message" severity="info, warning" showDetail="true" />
 
-                <p:dataTable id="userList" var="user" value="#{userListController.userList}" rowKey="#{user.id}"
-                             selection="#{userListController.selectedUser}" selectionMode="single" reflow="true">
+                <p:menubar styleClass="button-panel">
+
+                    <p:submenu label="Actions" icon="ui-icon-document">
+                        <p:menuitem value="New" url="register.xhtml" icon="fa fa-save" />
+                        <p:separator />
+                        <p:submenu label="Submenu action" icon="ui-icon-contact">  
+                            <p:menuitem value="Item 1" icon="fa fa-save" />
+                            <p:menuitem value="Item 2" icon="fa fa-arrow-left"/>
+                        </p:submenu>
+                    </p:submenu>
+
+                    <f:facet name="options">
+
+                    </f:facet>
+                </p:menubar>
+
+                <p:dataTable id="userList" var="user" 
+                             value="#{userListController.userList}" 
+                             resizableColumns="true"
+                             draggableColumns="true"
+                             reflow="true"
+                             paginator="true"
+                             rows="5"
+
+                             selectionMode="single"
+                             rowKey="#{user.id}" 
+                             selection="#{userListController.selectedUser}" >
 
                     <p:ajax event="rowDblselect" listener="#{userListController.listenerRowDblselect}" />
 
-                    <p:column headerText="Id">
+                    <p:column headerText="Id" sortBy="#{user.id}" >
                         <h:outputText value="#{user.id}" />
                     </p:column>
 
-                    <p:column headerText="Username">
+                    <p:column headerText="Username" sortBy="#{user.userName}" >
                         <h:outputText value="#{user.userName}" />
                     </p:column>
 
-                    <p:column headerText="Email">
+                    <p:column headerText="Email" sortBy="#{user.email}" >
                         <h:outputText value="#{user.email}" />
+                    </p:column>
+
+                    <p:column headerText="Actions" class="columnActionDataTable">
+                        <p:commandButton icon="fa fa-fw fa-edit" title="Edit" action="#{userListController.editUserFromList(user)}" />
+                        <p:commandButton icon="fa fa-remove" title="Remove" action="#{userListController.removeUserFromList(user)}" />
                     </p:column>
 
                 </p:dataTable>

@@ -20,24 +20,6 @@
 
             <h:form id="formCustomer">
 
-                <p:menubar styleClass="button-panel">
-
-                    <p:submenu label="Actions" icon="ui-icon-document">
-                        <p:submenu label="Submenu action" icon="ui-icon-contact">  
-                            <p:menuitem value="Item 1" icon="fa fa-save" />
-                            <p:menuitem value="Item 2" icon="fa fa-arrow-left"/>
-                        </p:submenu>
-
-                        <p:menuitem value="Save" actionListener="#{userController.save}" update="formCustomer" icon="fa fa-save" />
-                        <p:separator />
-                        <p:menuitem value="Cancel" icon="fa fa-arrow-left"/>
-                    </p:submenu>
-
-                    <f:facet name="options">
-
-                    </f:facet>
-                </p:menubar>
-
                 <div class="ui-fluid">
 
                     <p:messages id="message" severity="info, warning" showDetail="true" />
@@ -65,6 +47,15 @@
                             <p:outputLabel for="repeatPassword" value="Repeat password" />
                             <p:password id="repeatPassword" value="#{userController.user.repeatPassword}" />
                             <p:message for="repeatPassword" ></p:message>
+                        </p:column>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank button-panel" >
+                        <p:column>
+                            <p:commandButton value="Save" action="#{userController.save}" update="formCustomer" />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="Cancel" onclick="window.history.back()"/>
                         </p:column>
                     </p:panelGrid>
                 </div>

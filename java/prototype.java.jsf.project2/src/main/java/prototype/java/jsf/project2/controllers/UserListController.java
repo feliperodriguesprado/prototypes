@@ -31,14 +31,7 @@ public class UserListController implements Serializable {
     }
 
     public void listenerRowDblselect() {        
-        FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-
-        try {
-            ec.redirect("register.xhtml?userId=" + selectedUser.getId());
-        } catch (Exception e) {
-            System.out.println("error: " + e.getMessage());
-        }
+        redirectToEditUser(selectedUser.getId());
     }
 
     public List<UserDTO> getUserList() {
@@ -52,5 +45,24 @@ public class UserListController implements Serializable {
     public void setSelectedUser(UserDTO selectedUser) {
         this.selectedUser = selectedUser;
     }
+    
+    public void editUserFromList(UserDTO userFromList) {
+        redirectToEditUser(userFromList.getId());
+    }
+    
+    public void removeUserFromList(UserDTO userFromList) {
+        System.out.println("remove user " + userFromList.getId());
+    }
 
+    private void redirectToEditUser(long userId) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        try {
+            ec.redirect("register.xhtml?userId=" + userId);
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+        }
+    }
+    
 }

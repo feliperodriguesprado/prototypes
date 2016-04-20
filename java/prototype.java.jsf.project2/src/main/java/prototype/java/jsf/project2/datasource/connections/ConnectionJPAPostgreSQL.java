@@ -18,14 +18,12 @@ public class ConnectionJPAPostgreSQL implements ConnectionJPA {
 
     @PostConstruct
     public void postConstruct() {
-        System.out.println("Object " + this.toString() + " built...");
         entityManagerFactory = Persistence.createEntityManagerFactory("postgresql");
         entityManager = entityManagerFactory.createEntityManager();
     }
 
     @PreDestroy
     public void preDestroy() {
-        System.out.println("Object " + this.toString() + " destroyed...");
         entityManager.close();
         entityManagerFactory.close();
     }

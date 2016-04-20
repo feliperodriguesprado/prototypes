@@ -54,16 +54,8 @@ public class UserService implements IUserService {
                 em.merge(userPO);
             }
 
-            Query query = em.createQuery("select p from UserPO p", UserPO.class);
-            List<UserPO> userList = query.getResultList();
-
-            userList.stream().forEach((userPO1) -> {
-                System.out.println(userPO1);
-            });
-
             connectionJPAPostgreSQL.commit();
             return user;
-
         } catch (Exception e) {
             connectionJPAPostgreSQL.rollback();
 
@@ -82,7 +74,7 @@ public class UserService implements IUserService {
         
         EntityManager em = connectionJPAPostgreSQL.getEntityManager();
 
-        Query query = em.createQuery("select p from UserPO p", UserPO.class);
+        Query query = em.createQuery("SELECT P FROM UserPO AS P ORDER BY P.id", UserPO.class);
         List<UserPO> userList = query.getResultList();
 
         ModelMapper modelMapper = new ModelMapper();
