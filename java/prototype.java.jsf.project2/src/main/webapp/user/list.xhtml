@@ -17,21 +17,11 @@
 
                 <p:messages id="message" severity="info, warning" showDetail="true" />
 
-                <p:menubar styleClass="button-panel">
-
-                    <p:submenu label="Actions" icon="ui-icon-document">
-                        <p:menuitem value="New" url="register.xhtml" icon="fa fa-save" />
-                        <p:separator />
-                        <p:submenu label="Submenu action" icon="ui-icon-contact">  
-                            <p:menuitem value="Item 1" icon="fa fa-save" />
-                            <p:menuitem value="Item 2" icon="fa fa-arrow-left"/>
-                        </p:submenu>
-                    </p:submenu>
-
-                    <f:facet name="options">
-
+                <p:toolbar class="toolbar">
+                    <f:facet name="left">
+                        <p:commandButton type="button" onclick="window.location = 'register.xhtml'" value="New" icon="fa fa-plus" />
                     </f:facet>
-                </p:menubar>
+                </p:toolbar>
 
                 <p:dataTable id="userList" var="user" 
                              value="#{userListController.userList}" 
@@ -39,6 +29,8 @@
                              draggableColumns="true"
                              reflow="true"
                              paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15"
                              rows="5"
 
                              selectionMode="single"
@@ -59,13 +51,11 @@
                         <h:outputText value="#{user.email}" />
                     </p:column>
 
-                    <p:column class="columnWithLinkDataTable">
+                    <p:column class="row-action-datatable">
                         <p:commandLink title="Edit" action="#{userListController.editUserFromList(user)}" >
-                            <i class="fa fa-fw fa-edit"></i>
+                                <i class="fa fa-fw fa-edit"></i>
                         </p:commandLink>
-                    </p:column>
-
-                    <p:column class="columnWithLinkDataTable">
+                        
                         <p:commandLink title="Remove" action="#{userListController.removeUserFromList(user)}" >
                             <i class="fa fa-fw fa-remove"></i>
                         </p:commandLink>

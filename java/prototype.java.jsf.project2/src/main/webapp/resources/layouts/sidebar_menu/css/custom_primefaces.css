@@ -36,7 +36,7 @@
 
 .menu-content .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-corner-all {
     padding: 11.5px 0 11.5px 25px;
-    width: 213px;
+    width: 215px;
 }
 
 .menu-content .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-corner-all.ui-state-hover {
@@ -59,15 +59,4 @@
 
 .content .ui-panelgrid .ui-panelgrid-cell {
     border: none;
-}
-
-
-/*toolbar*/
-
-.ui-toolbar.ui-widget.ui-widget-header.ui-corner-all.ui-helper-clearfix {
-    padding: 0;
-}
-
-.ui-toolbar .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left {
-    margin: 2.5px 3px 3px 3px;
 }

@@ -18,7 +18,7 @@ function LayoutCtrl() {
             event.preventDefault();
         });
 
-        $('.btn-toggle-left').on('mousemove' /*'click'*/, function (event) {
+        $('.btn-toggle-left').on(/*'mousemove'*/ 'click', function (event) {
             toggleMenu();
             event.preventDefault();
         });

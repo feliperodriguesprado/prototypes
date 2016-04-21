@@ -31,7 +31,9 @@ public class UserListController implements Serializable {
     }
 
     public void listenerRowDblselect() {        
-        redirectToEditUser(selectedUser.getId());
+        if (selectedUser != null) {
+            redirectToEditUser(selectedUser.getId());
+        }
     }
 
     public List<UserDTO> getUserList() {
