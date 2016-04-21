@@ -1,4 +1,4 @@
-package prototype.java.jsf.project2.controllers;
+package prototype.java.jsf.project2.user.view.controllers;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

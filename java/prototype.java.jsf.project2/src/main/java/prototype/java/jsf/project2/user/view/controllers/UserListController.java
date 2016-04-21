@@ -1,15 +1,17 @@
-package prototype.java.jsf.project2.controllers;
+package prototype.java.jsf.project2.user.view.controllers;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import prototype.java.jsf.project2.models.dto.UserDTO;
-import prototype.java.jsf.project2.services.IUserService;
+import prototype.java.jsf.project2.user.api.enums.PeopleType;
+import prototype.java.jsf.project2.user.api.models.dto.UserDTO;
+import prototype.java.jsf.project2.user.api.services.IUserService;
 
 @ViewScoped
 @Named
@@ -53,7 +55,16 @@ public class UserListController implements Serializable {
     }
     
     public void removeUserFromList(UserDTO userFromList) {
-        System.out.println("remove user " + userFromList.getId());
+        
+        
+        try {
+            userService.delete(userFromList.getId());
+            userList = userService.getAll();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User deleted", userFromList.toString()));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "User register", ex.getMessage()));
+        }
+        
     }
 
     private void redirectToEditUser(long userId) {

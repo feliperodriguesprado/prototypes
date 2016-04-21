@@ -1,4 +1,4 @@
-package prototype.java.jsf.project2.enums;
+package prototype.java.jsf.project2.user.api.enums;
 
 public enum PeopleType {
 

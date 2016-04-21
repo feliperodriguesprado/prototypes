@@ -18,7 +18,7 @@
 
         <div class="content">
 
-            <h:form id="formCustomer">
+            <h:form id="formUser">
 
                 <div class="ui-fluid">
 
@@ -32,7 +32,7 @@
                         </p:column>
                         <p:column>
                             <p:outputLabel for="email" value="Email" />
-                            <p:inputText id="email" value="#{userController.user.email}" />
+                            <p:inputText id="email" type="email" value="#{userController.user.email}" />
                             <p:message for="email" ></p:message>
                         </p:column>
                     </p:panelGrid>
@@ -49,14 +49,22 @@
                             <p:message for="repeatPassword" ></p:message>
                         </p:column>
                     </p:panelGrid>
-                    
-                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank button-panel" >
+
+                    <p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank button-panel" >
                         <p:column>
-                            <p:commandLink value="Save" action="#{userController.save}" update="formCustomer" class="command-link-buttom" />
+                            <p:commandLink value="Save" action="#{userController.save}" update="formUser" class="command-link-buttom" />
                             <p:commandLink value="Cancel" onclick="window.history.back()" class="command-link-buttom" />
                         </p:column>
                     </p:panelGrid>
                 </div>
+
+                <p:dialog header="User register" closable="false" widgetVar="userRegister" modal="true" resizable="false" width="300" height="60">
+                    <h:outputText value="User saved successfully" />
+
+                    <f:facet name="footer" class="modal-footer">
+                        <p:commandButton id="btnOk" value="Ok" onclick="window.location = 'list.xhtml'"/>
+                    </f:facet>
+                </p:dialog>
             </h:form>
         </div>
     </ui:define>

@@ -1,4 +1,4 @@
-package prototype.java.jsf.project2.models.po;
+package prototype.java.jsf.project2.user.core.models.po;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import prototype.java.jsf.project2.enums.PeopleType;
+import prototype.java.jsf.project2.user.api.enums.PeopleType;
 
 @Entity
 @Table(name = "people")

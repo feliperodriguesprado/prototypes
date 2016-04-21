@@ -49,14 +49,17 @@
 
 /**content***/
 
-/*.content .ui-fluid {
-    margin-top: -30px;
-}*/
-
 .content .ui-fluid .ui-messages.ui-widget {
     margin: 0 10px 0px 10px;
 }
 
 .content .ui-panelgrid .ui-panelgrid-cell {
     border: none;
+}
+
+
+/***dialog***/
+
+.ui-dialog  .ui-dialog-footer.ui-widget-content {
+    text-align: center;
 }

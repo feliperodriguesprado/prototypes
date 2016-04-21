@@ -13,15 +13,15 @@
 
         <div class="content">
 
-            <h:form id="formCustomer">
-
-                <p:messages id="message" severity="info, warning" showDetail="true" />
+            <h:form id="formUserList">
 
                 <p:toolbar class="toolbar">
                     <f:facet name="left">
                         <p:commandButton type="button" onclick="window.location = 'register.xhtml'" value="New" icon="fa fa-plus" />
                     </f:facet>
                 </p:toolbar>
+                
+                <p:messages id="message" severity="info, warning" showDetail="true" />
 
                 <p:dataTable id="userList" var="user" 
                              value="#{userListController.userList}" 
@@ -56,7 +56,7 @@
                                 <i class="fa fa-fw fa-edit"></i>
                         </p:commandLink>
                         
-                        <p:commandLink title="Remove" action="#{userListController.removeUserFromList(user)}" >
+                        <p:commandLink title="Remove" action="#{userListController.removeUserFromList(user)}" update="formUserList">
                             <i class="fa fa-fw fa-remove"></i>
                         </p:commandLink>
                     </p:column>

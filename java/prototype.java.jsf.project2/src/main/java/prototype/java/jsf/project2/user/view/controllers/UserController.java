@@ -1,4 +1,4 @@
-package prototype.java.jsf.project2.controllers;
+package prototype.java.jsf.project2.user.view.controllers;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -8,10 +8,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import prototype.java.jsf.project2.enums.PeopleType;
-import prototype.java.jsf.project2.models.dto.PeopleDTO;
-import prototype.java.jsf.project2.models.dto.UserDTO;
-import prototype.java.jsf.project2.services.IUserService;
+import org.primefaces.context.RequestContext;
+import prototype.java.jsf.project2.user.api.enums.PeopleType;
+import prototype.java.jsf.project2.user.api.models.dto.PeopleDTO;
+import prototype.java.jsf.project2.user.api.models.dto.UserDTO;
+import prototype.java.jsf.project2.user.api.services.IUserService;
 
 @ViewScoped
 @Named
@@ -47,26 +48,32 @@ public class UserController implements Serializable {
 
     public void save() {
 
-        people.setName(user.getUserName());
-        people.setType(PeopleType.USER);
-        user.setPeople(people);
-
-        System.out.println(user);
-
         try {
-            userService.create(user);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User register", user.toString()));
+            people.setName(user.getUserName());
+            people.setType(PeopleType.USER);
+            user.setPeople(people);
 
-            FacesContext fc = FacesContext.getCurrentInstance();
-            ExternalContext ec = fc.getExternalContext();
-
-            try {
-                ec.redirect("list.xhtml");
-            } catch (Exception e) {
-                System.out.println("error: " + e.getMessage());
+            if (user.getId() == 0) {
+                userService.create(user);
+            } else {
+                userService.update(user);
             }
+
+            RequestContext requestContext = RequestContext.getCurrentInstance();
+            requestContext.execute("PF('userRegister').show();");
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "User register", ex.getMessage()));
+        }
+    }
+
+    public void redirect() {
+
+        try {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            ExternalContext ec = fc.getExternalContext();
+            ec.redirect("list.xhtml");
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
         }
     }
 

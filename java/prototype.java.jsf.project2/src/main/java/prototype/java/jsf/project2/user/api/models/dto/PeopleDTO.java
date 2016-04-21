@@ -1,6 +1,6 @@
-package prototype.java.jsf.project2.models.dto;
+package prototype.java.jsf.project2.user.api.models.dto;
 
-import prototype.java.jsf.project2.enums.PeopleType;
+import prototype.java.jsf.project2.user.api.enums.PeopleType;
 
 public class PeopleDTO {
 
@@ -30,6 +30,11 @@ public class PeopleDTO {
 
     public void setType(PeopleType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "PeopleDTO{" + "id=" + id + ", name=" + name + ", type=" + type + '}';
     }
 
 }
