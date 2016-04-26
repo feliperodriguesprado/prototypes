@@ -1,5 +1,6 @@
 package prototype.java.jsf.project2.user.api.models.dto;
 
+import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserDTO {
@@ -10,6 +11,7 @@ public class UserDTO {
     private String userName;
 
     @NotEmpty(message = "Email is required")
+    @Pattern(regexp = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$", message = "Invalid email")
     private String email;
 
     @NotEmpty(message = "Password is required")
