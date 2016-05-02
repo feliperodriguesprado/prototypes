@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/resources/layouts/sidebar_menu/layout.xhtml">
+
+    <ui:define name="content">
+
+        <f:metadata>
+            <f:viewParam name="userId" value="#{userController.paramUserId}" />
+            <f:viewAction action="#{userController.onload}" />
+        </f:metadata>
+
+        <div class="title-content">
+            <h2>User register</h2>
+        </div>
+
+        <div class="content">
+
+            <h:form id="formUser">
+
+                <div class="ui-fluid">
+
+                    <p:messages id="message" severity="info, warning" showDetail="true" />
+
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-4, ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank" >
+                        <p:column>
+                            <p:outputLabel for="userName" value="Username" />
+                            <p:inputText id="userName" value="#{userController.user.userName}" />
+                            <p:message for="userName" ></p:message>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel for="email" value="Email" />
+                            <p:inputText id="email" type="email" value="#{userController.user.email}" />
+                            <p:message for="email" ></p:message>
+                        </p:column>
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank" >
+                        <p:column>
+                            <p:outputLabel for="password" value="Password" />
+                            <p:password id="password" value="#{userController.user.password}" />
+                            <p:message for="password" ></p:message>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel for="repeatPassword" value="Repeat password" />
+                            <p:password id="repeatPassword" value="#{userController.user.repeatPassword}" />
+                            <p:message for="repeatPassword" ></p:message>
+                        </p:column>
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="1" columnClasses="ui-grid-col-2" layout="grid" styleClass="ui-panelgrid-blank button-panel" >
+                        <p:column>
+                            <p:commandLink value="Save" action="#{userController.save}" update="formUser" class="command-link-buttom" />
+                            <p:commandLink value="Cancel" onclick="window.history.back()" class="command-link-buttom" />
+                        </p:column>
+                    </p:panelGrid>
+                </div>
+
+                <p:dialog header="User register" closable="false" widgetVar="userRegister" modal="true" resizable="false" width="300" height="60">
+                    <h:outputText value="User saved successfully" />
+
+                    <f:facet name="footer" class="modal-footer">
+                        <p:commandButton id="btnOk" value="Ok" onclick="window.location = 'list.xhtml'"/>
+                    </f:facet>
+                </p:dialog>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

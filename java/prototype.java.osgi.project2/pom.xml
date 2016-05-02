@@ -49,13 +49,13 @@
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                         <Bundle-Name>Prototype Java OSGi bundle - Project 2</Bundle-Name>
                         <Bundle-Activator>prototype.java.osgi.project2.Activator</Bundle-Activator>
-                        <Import-Package>
+<!--                        <Import-Package>
                             org.osgi.framework
-                        </Import-Package>
+                        </Import-Package>-->
                         
                         <Embed-Dependency>spring-context;spring-aop;spring-beans;spring-core;spring-expression;commons-logging;scope=compile|runtime;inline=false</Embed-Dependency>
                         <Embed-Directory>target/dependency</Embed-Directory>
-                        <Embed-StripGroup>true</Embed-StripGroup>
+                        <Embed-Transitive>true</Embed-Transitive> 
                     </instructions>
                 </configuration>
             </plugin>

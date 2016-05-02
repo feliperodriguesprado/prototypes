@@ -1,0 +1,65 @@
+/***font***/
+
+.ui-widget {
+    font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+}
+
+
+/***menu***/
+
+.menu-content .ui-menu {
+    border: none;
+    background: #f5f5f5;
+    width: auto;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica,Arial, sans-serif;
+}
+
+/*submenu*/
+.menu-content .ui-menu-list .ui-widget-header.ui-corner-all {
+    padding: 8.05px 0;
+    border: none;
+    border-radius: 0;
+    width: 240px;
+    margin: 0;
+    background: #eeeeee;
+}
+
+.menu-content .ui-menu-list .ui-widget-header.ui-corner-all.ui-state-hover {
+    background: #e0e0e0;
+}
+
+/* menu item*/
+.menu-content .ui-menu-list .ui-menuitem.ui-widget.ui-corner-all {
+    margin: 0;
+} 
+
+.menu-content .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-corner-all {
+    padding: 11.5px 0 11.5px 25px;
+    width: 215px;
+}
+
+.menu-content .ui-menu-list .ui-menuitem .ui-menuitem-link.ui-corner-all.ui-state-hover {
+    margin: 0;
+    border-radius: 0;
+    background: #e0e0e0;
+    color: #333333;
+}
+
+
+/**content***/
+
+.content .ui-fluid .ui-messages.ui-widget {
+    margin: 0 10px 0px 10px;
+}
+
+.content .ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+
+/***dialog***/
+
+.ui-dialog  .ui-dialog-footer.ui-widget-content {
+    text-align: center;
+}

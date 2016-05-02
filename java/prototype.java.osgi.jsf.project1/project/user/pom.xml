@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>prototypes.java.project1</groupId>
+        <artifactId>project1</artifactId>
+        <version>none</version>
+    </parent>
+    
+    <groupId>prototypes.java.project1.user</groupId>
+    <artifactId>user</artifactId>
+    <version>none</version>
+    <name>Projeto 1 - User</name>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>api/v1/project1.user.api</module>
+        <module>view/v1/project1.user.view</module>
+    </modules>
+    
+</project>
