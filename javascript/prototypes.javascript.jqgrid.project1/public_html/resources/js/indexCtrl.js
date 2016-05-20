@@ -45,6 +45,7 @@ function IndexCtrl() {
             rowNum: 5,
             rowList: [5, 10, 15, 20],
             pager: pager,
+            editurl: 'clientArray',
             sortname: 'column2',
             viewrecords: true,
             sortorder: 'asc',
@@ -61,15 +62,47 @@ function IndexCtrl() {
     function setGridFooter() {
         grid.jqGrid('navGrid', '#pager',
                 {edit: true, add: true, del: true, search: false, refresh: true}, //options 
-                {beforeShowForm: function () {setjqGridModalCenter('editmod', grid);}, reloadAfterSubmit: false}, // edit options
-                {beforeShowForm: function () {setjqGridModalCenter('editmod', grid);}, reloadAfterSubmit: false}, // add options 
-                {beforeShowForm: function () {setjqGridModalCenter('delmod', grid);}, reloadAfterSubmit: false}, // del options 
+                {beforeShowForm: setjqGridModalAddEditCenter, reloadAfterSubmit: false, onclickSubmit: onclickSubmitEdit, beforeSubmit: beforeSubmitEdit, afterSubmit: afterSubmitEdit, closeAfterEdit: true}, // edit options
+                {beforeShowForm: setjqGridModalAddEditCenter, reloadAfterSubmit: false}, // add options 
+                {beforeShowForm: setjqGridModalDeleteCenter, reloadAfterSubmit: false}, // del options 
                 {} // search options );
         );
     }
 
-    function setjqGridModalCenter(element, grid) {
-        var editModal = $('#' + element + grid[0].id),
+    function onclickSubmitEdit(options, postdata) {
+        console.log('Event onclickSubmit:');
+        console.log(options);
+        console.log(postdata);
+    }
+
+    function beforeSubmitEdit(postdata, formid) {
+        console.log('Event beforeSubmit:');
+        console.log(postdata);
+        console.log(formid);
+        return [true, 'Success'];
+    }
+
+    function afterSubmitEdit(response, postdata) {
+        console.log('Event afterSubmit:');
+        console.log(response);
+        console.log(postdata);
+        return [true, 'Success'];
+        //return [false, 'Error'];
+    }
+
+    function setjqGridModalAddEditCenter(formid) {
+        var editModal = $('#editmod' + grid[0].id),
+                screenHeight = $(window).height(),
+                screenWidth = $(window).width(),
+                modalHeight = editModal.height(),
+                modalWidth = editModal.width();
+
+        editModal[0].style.top = (screenHeight / 2 - modalHeight) + 'px';
+        editModal[0].style.left = (screenWidth / 2 - modalWidth / 2) + 'px';
+    }
+
+    function setjqGridModalDeleteCenter(formid) {
+        var editModal = $('#delmod' + grid[0].id),
                 screenHeight = $(window).height(),
                 screenWidth = $(window).width(),
                 modalHeight = editModal.height(),
