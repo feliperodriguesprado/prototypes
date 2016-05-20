@@ -1,31 +1,11 @@
 function IndexCtrl() {
 
-    var data;
+    var dataAccess = new DataAccess();
     var grid;
     var pager;
 
     function initialize() {
-        data = [
-            {column1: 1, column2: 'Text 1'},
-            {column1: 2, column2: 'Text 2'},
-            {column1: 3, column2: 'Text 3'},
-            {column1: 4, column2: 'Text 4'},
-            {column1: 5, column2: 'Text 5'},
-            {column1: 6, column2: 'Text 6'},
-            {column1: 7, column2: 'Text 7'},
-            {column1: 8, column2: 'Text 8'},
-            {column1: 9, column2: 'Text 9'},
-            {column1: 11, column2: 'Text 11'},
-            {column1: 12, column2: 'Text 12'},
-            {column1: 13, column2: 'Text 13'},
-            {column1: 14, column2: 'Text 14'},
-            {column1: 15, column2: 'Text 15'},
-            {column1: 16, column2: 'Text 16'},
-            {column1: 17, column2: 'Text 17'},
-            {column1: 18, column2: 'Text 18'},
-            {column1: 19, column2: 'Text 19'},
-            {column1: 20, column2: 'Text 20'}
-        ];
+
         grid = $('#grid');
         pager = $('#pager');
         setConfigurationGrid();
@@ -37,13 +17,13 @@ function IndexCtrl() {
 
         grid.jqGrid({
             datatype: 'local',
-            colNames: ['Column 1', 'Column 2'],
+            colNames: ['ID', 'Column 2'],
             colModel: [
-                {name: 'column1', index: 'column1', editable: false, hidden: false, align: "center"},
-                {name: 'column2', index: 'column2', editable: true, hidden: false, align: "center"}
+                {name: 'id', index: 'id', editable: false, align: "center"},
+                {name: 'column2', index: 'column2', editable: true, align: "center"}
             ],
-            rowNum: 5,
-            rowList: [5, 10, 15, 20],
+            rowNum: 10,
+            rowList: [10, 20, 30, 40, 50],
             pager: pager,
             editurl: 'clientArray',
             sortname: 'column2',
@@ -51,22 +31,47 @@ function IndexCtrl() {
             sortorder: 'asc',
             caption: 'Title grid',
             height: 'auto',
-            width: 1024
+            width: 1024,
+            localReader: {
+                root: "root",
+                page: "pager",
+                total: 'total',
+                records: 'records',
+                repeatitems: true,
+                cell: "cell",
+                id: "id",
+                userdata: "userdata",
+                subgrid: {root: "rows", repeatitems: true, cell: "cell"}
+            }
         });
     }
 
     function setGridData() {
-        grid.jqGrid('setGridParam', {data: data}).trigger("reloadGrid");
+        grid.jqGrid('setGridParam', {data: dataAccess.getList()}).trigger("reloadGrid");
+        grid.getGridParam('page');
+        grid.getGridParam('records');
+        grid.getGridParam('lastpage');
     }
 
     function setGridFooter() {
         grid.jqGrid('navGrid', '#pager',
                 {edit: true, add: true, del: true, search: false, refresh: true}, //options 
                 {beforeShowForm: setjqGridModalAddEditCenter, reloadAfterSubmit: false, onclickSubmit: onclickSubmitEdit, beforeSubmit: beforeSubmitEdit, afterSubmit: afterSubmitEdit, closeAfterEdit: true}, // edit options
-                {beforeShowForm: setjqGridModalAddEditCenter, reloadAfterSubmit: false}, // add options 
-                {beforeShowForm: setjqGridModalDeleteCenter, reloadAfterSubmit: false}, // del options 
+                {beforeShowForm: setjqGridModalAddEditCenter, reloadAfterSubmit: false, afterSubmit: afterSubmitAdd, closeAfterAdd: true}, // add options 
+                {beforeShowForm: setjqGridModalDeleteCenter, reloadAfterSubmit: false, afterSubmit: afterSubmitDelete, closeAfterDelete: true}, // del options 
                 {} // search options );
         );
+    }
+
+    function afterSubmitAdd(response, postdata) {
+        console.log('Event afterSubmit:');
+        console.log(response);
+        console.log(postdata);
+        
+        postdata.id = new Date().getTime();
+        dataAccess.add({id: postdata.id, column2: postdata.column2});
+        dataAccess.printListConsole();
+        return [true, 'Success'];
     }
 
     function onclickSubmitEdit(options, postdata) {
@@ -86,8 +91,24 @@ function IndexCtrl() {
         console.log('Event afterSubmit:');
         console.log(response);
         console.log(postdata);
+
+        try {
+            dataAccess.updateObject({id: postdata.false, column2: postdata.column2});
+            dataAccess.printListConsole();
+            return [true, 'Success'];
+        } catch (e) {
+            return [false, e.message];
+        }
+    }
+
+    function afterSubmitDelete (response, postdata) {
+        console.log('Event afterSubmit:');
+        console.log(response);
+        console.log(postdata);
+        
+        dataAccess.deleteById(postdata.id);
+        
         return [true, 'Success'];
-        //return [false, 'Error'];
     }
 
     function setjqGridModalAddEditCenter(formid) {
