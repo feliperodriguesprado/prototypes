@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import prototype.java.jsf.project2.user.api.enums.PeopleType;
 import prototype.java.jsf.project2.user.api.models.dto.UserDTO;
 import prototype.java.jsf.project2.user.api.services.IUserService;
 

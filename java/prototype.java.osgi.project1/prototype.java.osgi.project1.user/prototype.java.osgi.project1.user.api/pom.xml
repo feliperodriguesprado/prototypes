@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <artifactId>prototype.java.osgi.project1.user</artifactId>
+        <groupId>prototype.java.osgi.project1.user</groupId>
+        <version>none</version>
+    </parent>
+
+    <groupId>prototype.java.osgi.project1.user</groupId>
+    <artifactId>prototype.java.osgi.project1.user.api</artifactId>
+    <version>1.0-PROTOTYPE</version>
+    <packaging>bundle</packaging>
+    <name>User - Bundle API</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.0.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>User bundle API</Bundle-Name>
+                        <Bundle-Activator>${project.artifactId}.initialize.Activator</Bundle-Activator>
+                        <Export-Package>${project.artifactId}.user.api.services</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
