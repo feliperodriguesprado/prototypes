@@ -6,3 +6,7 @@
 /java/prototype.java.enterprise.application4/user.api/target/
 /java/prototype.java.enterprise.application4/user.view/target/
 /java/prototype.java.enterprise.application4/user.client/target/
+/java/prototype.java.enterprise.application1/user/user.api/target/
+/java/prototype.java.enterprise.application1/user/user.core/target/
+/java/prototype.java.enterprise.application1/user/user.view.web/target/
+/java/prototype.java.enterprise.application1/user/user.view.desktop/target/
