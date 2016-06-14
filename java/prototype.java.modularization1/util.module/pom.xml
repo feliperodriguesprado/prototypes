@@ -9,14 +9,12 @@
         <version>none</version>
     </parent>
     
-    <artifactId>user.module</artifactId>
+    <artifactId>util.module</artifactId>
     <packaging>pom</packaging>
     
-    <name>User Module</name>
+    <name>Util Module</name>
     
-    <modules>
-        <module>user.api</module>
-        <module>user.core</module>
-    <module>user.view</module>
+  <modules>
+    <module>util.servicelocator</module>
   </modules>
 </project>

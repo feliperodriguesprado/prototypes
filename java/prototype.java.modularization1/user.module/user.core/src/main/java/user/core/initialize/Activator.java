@@ -1,4 +1,4 @@
-package user.api.initialize;
+package user.core.initialize;
 
 import java.util.logging.Logger;
 import org.osgi.framework.BundleActivator;

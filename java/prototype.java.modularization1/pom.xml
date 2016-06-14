@@ -12,9 +12,54 @@
     
     <modules>
         <module>user.module</module>
+        <module>util.module</module>
     </modules>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+            <!-- User Module API -->
+            <dependency>
+                <groupId>prototypes.java</groupId>
+                <artifactId>user.api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>prototypes.java</groupId>
+                <artifactId>util.servicelocator</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Specification OSGi -->
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.core</artifactId>
+                <version>4.2.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Java EE 7 Web -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Java EE 7 -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
 </project>

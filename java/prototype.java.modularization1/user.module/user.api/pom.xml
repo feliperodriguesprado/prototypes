@@ -18,14 +18,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <version>4.2.0</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -41,7 +41,10 @@
                         <Bundle-SymbolicName>user.api-${project.version}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>user.api.initialize.Activator</Bundle-Activator>
-                        <Export-Package>user.api.initialize</Export-Package>
+                        <Export-Package>
+                            user.api.models.dto;
+                            user.api.services
+                        </Export-Package>
                     </instructions>
                 </configuration>
             </plugin>
