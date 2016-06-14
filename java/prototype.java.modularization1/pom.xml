@@ -17,6 +17,8 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     
     <dependencyManagement>
@@ -34,6 +36,29 @@
                 <artifactId>util.servicelocator</artifactId>
                 <version>1.0.0</version>
                 <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.0.0.Final</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <!-- Primefaces theme bootstrap -->
+            <dependency>
+                <groupId>org.primefaces.themes</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>1.0.10</version>
+                <scope>compile</scope>
+            </dependency>
+            
+            <!-- Primefaces framework -->
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>5.3</version>
+                <scope>compile</scope>
             </dependency>
             
             <!-- Specification OSGi -->

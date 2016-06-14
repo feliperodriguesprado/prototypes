@@ -1,6 +1,6 @@
 package user.core.services;
 
-import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,16 +14,28 @@ public class UserService implements User {
     private EntityManager em;
 
     @Override
-    public UserDTO getUser() {
+    public UserDTO create(UserDTO user) throws Exception {
+        return null;
+    }
 
-        System.out.println(em);
-        
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(new Date().getTime());
-        userDTO.setUserName("felipeprado");
-        userDTO.setEmail("rodriguesprado.felipe@gmail.com");
-        return userDTO;
+    @Override
+    public UserDTO getById(long id) throws Exception {
+        return null;
+    }
 
+    @Override
+    public UserDTO update(UserDTO user) throws Exception {
+        return null;
+    }
+
+    @Override
+    public void delete(long id) throws Exception {
+
+    }
+
+    @Override
+    public List<UserDTO> getAll() throws Exception {
+        return null;
     }
 
 }

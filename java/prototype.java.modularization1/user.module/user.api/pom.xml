@@ -24,6 +24,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
@@ -43,6 +47,7 @@
                         <Bundle-Activator>user.api.initialize.Activator</Bundle-Activator>
                         <Export-Package>
                             user.api.models.dto;
+                            user.api.enums;
                             user.api.services
                         </Export-Package>
                     </instructions>

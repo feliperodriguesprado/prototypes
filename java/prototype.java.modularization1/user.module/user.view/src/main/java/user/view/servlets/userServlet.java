@@ -33,7 +33,7 @@ public class userServlet extends HttpServlet {
         UserDTO userDTO = new UserDTO();
 
         if (userService != null) {
-            userDTO = userService.getUser();
+            //userDTO = userService.getUser();
         }
 
         try (PrintWriter out = response.getWriter()) {

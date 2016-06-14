@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Prototype 2</title>
+
+        <!-- styles -->
+        <h:outputStylesheet library="layouts" name="sidebar_menu/css/layout.css" />
+        <h:outputStylesheet library="layouts" name="sidebar_menu/css/custom_primefaces.css" />
+
+        <!-- scripts -->
+        <h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
+        <h:outputScript target="body" library="layouts" name="sidebar_menu/js/layoutCtrl.js" />
+        <h:outputScript target="body" library="layouts" name="sidebar_menu/js/locale.js" />
+    </h:head>  
+
+    <h:body>
+
+        <div class="overlay"></div>
+
+        <header>
+            <div class="btn-toggle-right">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="title-header">
+                <a href="#{request.contextPath}">Prototype 2</a>
+            </div>
+        </header>
+
+        <nav class="sidebar">
+
+            <div class="menu-title">
+                <a href="#{request.contextPath}">Prototype 2</a>
+            </div>
+
+            <div class="menu-content">
+                <h:form>
+                    <p:growl id="messages" showDetail="false" />
+                    <p:menu model="#{menuController.model}" toggleable="true" />
+                </h:form>
+            </div>
+        </nav>
+
+        <aside>
+            <div class="btn-toggle-left">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+        </aside>
+
+        <section>
+            <ui:insert name="content" />
+        </section>
+
+        <footer>
+            <p>Footer</p>
+        </footer>
+
+    </h:body>
+
+</html>
