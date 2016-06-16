@@ -46,7 +46,8 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>user.api.initialize.Activator</Bundle-Activator>
                         <Export-Package>
-                            user.api.services
+                            user.api.services;
+                            user.api.models.dto
                         </Export-Package>
                     </instructions>
                 </configuration>

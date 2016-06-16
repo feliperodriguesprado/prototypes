@@ -12,11 +12,11 @@ function LayoutCtrl() {
             toggleMenu();
             event.preventDefault();
         });
-        
-        $('.btn-toggle-right').on('mousemove', function (event) {
-            toggleMenu();
-            event.preventDefault();
-        });
+
+//        $('.btn-toggle-right').on('mousemove', function (event) {
+//            toggleMenu();
+//            event.preventDefault();
+//        });
 
         $('.btn-toggle-left').on(/*'mousemove'*/ 'click', function (event) {
             toggleMenu();
