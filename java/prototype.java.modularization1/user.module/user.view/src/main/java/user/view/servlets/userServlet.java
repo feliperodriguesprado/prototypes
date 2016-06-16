@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import user.api.models.dto.UserDTO;
 import user.api.services.User;
 import util.servicelocator.providers.BundleProvider;
 
@@ -30,10 +29,9 @@ public class userServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         userService = (User) BundleProvider.getBundleService(User.class);
-        UserDTO userDTO = new UserDTO();
 
         if (userService != null) {
-            //userDTO = userService.getUser();
+            userService.test();
         }
 
         try (PrintWriter out = response.getWriter()) {
@@ -45,7 +43,6 @@ public class userServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet userServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h3>" + userDTO.toString() + "</h3>");
             out.println("</body>");
             out.println("</html>");
         }

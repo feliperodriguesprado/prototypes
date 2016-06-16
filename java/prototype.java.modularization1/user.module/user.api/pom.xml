@@ -46,8 +46,6 @@
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>user.api.initialize.Activator</Bundle-Activator>
                         <Export-Package>
-                            user.api.models.dto;
-                            user.api.enums;
                             user.api.services
                         </Export-Package>
                     </instructions>
