@@ -1,6 +1,9 @@
 package user.api.services;
 
-public interface User {
+import java.util.List;
+import user.api.models.dto.UserDTO;
 
-    public void test();
+public interface User {
+    
+    public List<UserDTO> getAll();
 }

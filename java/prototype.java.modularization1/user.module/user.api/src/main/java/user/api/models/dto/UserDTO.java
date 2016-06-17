@@ -2,18 +2,18 @@ package user.api.models.dto;
 
 public class UserDTO {
 
-    private long Id;
+    private long id;
     private String userName;
     private String email;
     private String password;
     private String repeatPassword;
 
     public long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(long Id) {
-        this.Id = Id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -50,7 +50,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" + "Id=" + Id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + '}';
+        return "UserDTO{" + "Id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", repeatPassword=" + repeatPassword + '}';
     }
 
 }

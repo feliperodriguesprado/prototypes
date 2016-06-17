@@ -39,6 +39,13 @@
             </dependency>
             
             <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>0.6.5</version>
+                <scope>provided</scope>
+            </dependency>
+            
+            <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>5.0.0.Final</version>
@@ -57,7 +64,7 @@
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces</artifactId>
-                <version>5.3</version>
+                <version>6.0</version>
                 <scope>compile</scope>
             </dependency>
             

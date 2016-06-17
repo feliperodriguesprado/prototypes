@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import user.api.services.User;
-import util.servicelocator.providers.BundleProvider;
 
 @WebServlet(name = "userServlet", urlPatterns = {"/userServlet"})
 public class userServlet extends HttpServlet {
@@ -27,12 +26,6 @@ public class userServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        userService = (User) BundleProvider.getBundleService(User.class);
-
-        if (userService != null) {
-            userService.test();
-        }
 
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

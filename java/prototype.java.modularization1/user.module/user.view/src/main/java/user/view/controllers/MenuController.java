@@ -8,8 +8,6 @@ import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
-import user.api.services.User;
-import util.servicelocator.providers.BundleProvider;
 
 @ViewScoped
 @Named
@@ -17,17 +15,9 @@ public class MenuController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private MenuModel model;
-    private User userService;
 
     @PostConstruct
     public void init() {
-
-        userService = (User) BundleProvider.getBundleService(User.class);
-
-        if (userService != null) {
-            userService.test();
-        }
-
         model = new DefaultMenuModel();
         DefaultMenuItem item = new DefaultMenuItem(" Dashboard");
         item.setIcon("fa fa-dashboard");

@@ -1,44 +1,37 @@
 package user.view.controllers;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 import user.api.models.dto.UserDTO;
+import user.api.services.User;
+import util.servicelocator.providers.BundleProvider;
 
 @ViewScoped
 @Named
 public class UserListController implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private User userService;
     private List<UserDTO> userList;
     private UserDTO selectedUser;
 
     @PostConstruct
     public void init() {
         try {
-            userList = new ArrayList<>();
-            
-            UserDTO user1 = new UserDTO();
-            user1.setId(new Date().getTime());
-            user1.setUserName("felipeprado");
-            user1.setEmail("rodriguesprado.felipe@gmail.com");
-            user1.setPassword("Pa$$w0rd");
-            user1.setRepeatPassword("Pa$$w0rd");
-            
-            UserDTO user2 = new UserDTO();
-            user2.setId(new Date().getTime());
-            user2.setUserName("feliperodriguesprado");
-            user2.setEmail("feliperodriguesprado@hotmail.com");
-            user2.setPassword("Pa$$w0rd");
-            user2.setRepeatPassword("Pa$$w0rd");
-            
-            userList.add(user1);
-            userList.add(user2);
-            
+            userService = (User) BundleProvider.getBundleService(User.class);
+
+            if (userService != null) {
+                userList = userService.getAll();
+            } else {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning", "User Module Core not found");
+                RequestContext.getCurrentInstance().showMessageInDialog(message);
+            }
+
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
