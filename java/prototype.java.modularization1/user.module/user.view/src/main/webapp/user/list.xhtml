@@ -34,6 +34,10 @@
                     <p:column headerText="Username" sortBy="#{user.userName}" >
                         <h:outputText value="#{user.userName}" />
                     </p:column>
+                    
+                    <p:column headerText="Name" sortBy="#{user.people.name}" >
+                        <h:outputText value="#{user.people.name}" />
+                    </p:column>
 
                     <p:column headerText="Email" sortBy="#{user.email}" >
                         <h:outputText value="#{user.email}" />

@@ -7,6 +7,7 @@ public class UserDTO {
     private String email;
     private String password;
     private String repeatPassword;
+    private PeopleDTO people;
 
     public long getId() {
         return id;
@@ -46,6 +47,14 @@ public class UserDTO {
 
     public void setRepeatPassword(String repeatPassword) {
         this.repeatPassword = repeatPassword;
+    }
+
+    public PeopleDTO getPeople() {
+        return people;
+    }
+
+    public void setPeople(PeopleDTO people) {
+        this.people = people;
     }
 
     @Override

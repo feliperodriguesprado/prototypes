@@ -1,11 +1,14 @@
 package user.core.models.po;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,8 +33,9 @@ public class UserPO implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "people_id")
-    private long peopleId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "people_id")
+    private PeoplePO people;
 
     public long getId() {
         return id;
@@ -65,12 +69,12 @@ public class UserPO implements Serializable {
         this.password = password;
     }
 
-    public long getPeopleId() {
-        return peopleId;
+    public PeoplePO getPeople() {
+        return people;
     }
 
-    public void setPeopleId(long peopleId) {
-        this.peopleId = peopleId;
+    public void setPeople(PeoplePO people) {
+        this.people = people;
     }
 
 }
