@@ -6,7 +6,6 @@ CREATE SEQUENCE people_id_seq;
 CREATE TABLE people (
 	id integer NOT NULL DEFAULT nextval ('people_id_seq'),
 	name varchar(40) NOT NULL,
-	type integer NOT NULL,
 
 	CONSTRAINT pk_people PRIMARY KEY (id)
 );
