@@ -48,7 +48,7 @@ namespace User.Core.Test
         public void GetUser_Should_ThrowException_When_UserIdNotExists()
         {
             IUserService userService = new UserService(userRepository.Object);
-            Assert.AreEqual(456, userService.GetUser(456).Id);
+            userService.GetUser(456);
         }
 
         [TestMethod]
