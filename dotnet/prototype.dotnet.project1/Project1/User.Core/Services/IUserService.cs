@@ -12,5 +12,9 @@ namespace User.Core.Service
         UserPO GetUser(long userId);
 
         bool CheckUserEmail(string email);
+
+        bool LoginWithEmail(string email, string password);
+
+        bool LoginWithUsername(string username, string password);
     }
 }

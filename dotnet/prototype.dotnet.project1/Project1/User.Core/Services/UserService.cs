@@ -45,5 +45,15 @@ namespace User.Core.Services
                 throw new ArgumentException("Argument email is null or empty.");
             }
         }
+
+        public bool LoginWithEmail(string email, string password)
+        {
+            return false;
+        }
+
+        public bool LoginWithUsername(string username, string password)
+        {
+            return false;
+        }
     }
 }
