@@ -44,6 +44,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>user.api-${project.version}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>user.api.initialize.Activator</Bundle-Activator>
                         <Export-Package>

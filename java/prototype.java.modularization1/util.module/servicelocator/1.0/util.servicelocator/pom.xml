@@ -40,6 +40,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>util.servicelocator-${project.version}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>util.servicelocator.initialize.Activator</Bundle-Activator>
                         <Export-Package>

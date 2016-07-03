@@ -72,6 +72,7 @@
                     </supportedProjectTypes>
                     <instructions>
                         <Bundle-SymbolicName>user.core-${project.version}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Activator>user.core.initialize.Activator</Bundle-Activator>
                         <Export-Package />
