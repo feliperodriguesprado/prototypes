@@ -7,11 +7,12 @@
         <artifactId>util.module</artifactId>
         <groupId>prototypes.java</groupId>
         <version>none</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <groupId>prototypes.java</groupId>
     <artifactId>util.servicelocator</artifactId>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <packaging>bundle</packaging>
 
     <name>Util Service Locator Bundle - ${project.version}</name>

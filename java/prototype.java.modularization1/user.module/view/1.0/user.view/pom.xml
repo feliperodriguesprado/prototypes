@@ -6,6 +6,7 @@
         <artifactId>user.module</artifactId>
         <groupId>prototypes.java</groupId>
         <version>none</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
     <groupId>prototypes.java</groupId>

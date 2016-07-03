@@ -15,6 +15,6 @@
     <name>Util Module</name>
     
   <modules>
-    <module>util.servicelocator</module>
+    <module>servicelocator/1.0/util.servicelocator</module>
   </modules>
 </project>
