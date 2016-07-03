@@ -17,6 +17,6 @@
     <modules>
         <module>user.api</module>
         <module>user.core</module>
-    <module>user.view</module>
-  </modules>
+        <module>view/1.0/user.view</module>
+    </modules>
 </project>

@@ -3,6 +3,7 @@ user.module/user.api/target/
 user.module/user.core/target/
 user.module/user.core/nbproject/
 
-user.module/user.view/target/
+user.module/view/1.0/user.view/target/
+user.module/view/1.1/user.view/target/
 
 util.module/util.servicelocator/target/
