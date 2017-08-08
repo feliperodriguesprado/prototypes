@@ -38,7 +38,7 @@ public class UserPO implements Serializable {
     @NotEmpty(message = "Password is required")
     private String password;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "people_id")
     private PeoplePO people;
 
