@@ -34,7 +34,7 @@ public class UserService implements User {
             Query query = entityManager.createQuery("DELETE FROM UserPO");
             query.executeUpdate();
             
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100; i++) {
                 PeoplePO people = new PeoplePO();
                 people.setName("Name People " + i);
 
